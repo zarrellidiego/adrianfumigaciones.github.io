@@ -2,7 +2,7 @@
 <html lang="es-AR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Adrián Fumigaciones — Control de plagas en CABA y GBA</title>
 <meta name="description" content="Fumigación y control de plagas en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs. Respuesta rápida por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -215,7 +215,7 @@
   .glow-dot{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(218,42,42,0.22), transparent 70%); filter:blur(10px); animation:glow-drift 12s ease-in-out infinite;}
   @keyframes glow-drift{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(60px,-45px) scale(1.15);}}
 
-  .wa-wrap{position:fixed; bottom:26px; right:26px; z-index:60; display:flex; align-items:center; gap:12px;}
+  .wa-wrap{position:fixed; bottom:calc(26px + env(safe-area-inset-bottom)); right:calc(26px + env(safe-area-inset-right)); z-index:60; display:flex; align-items:center; gap:12px;}
   .wa-float{position:relative; background:#25D366; color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.22); transition:transform 0.2s; flex-shrink:0;}
   .wa-float::before{content:""; position:absolute; inset:0; border-radius:50%; background:#25D366; animation:wa-pulse 2.6s ease-out infinite; z-index:-1;}
   @keyframes wa-pulse{0%{transform:scale(1); opacity:0.55;} 100%{transform:scale(1.6); opacity:0;}}
@@ -301,10 +301,10 @@
     .process-grid{grid-template-columns:1fr; gap:28px;}
     .contact-card-big{padding:32px 20px; border-radius:20px; gap:32px;}
     .footer-grid{padding:40px 0 32px; gap:28px;}
-    .site-footer{padding-bottom:80px;}
-    .footer-bottom{flex-direction:column; align-items:flex-start;}
-    .wa-wrap{bottom:18px; right:18px; gap:8px;}
-    .wa-float{width:50px; height:50px;}
+    .site-footer{padding-bottom:calc(76px + env(safe-area-inset-bottom));}
+    .footer-bottom{flex-direction:column; align-items:flex-start; gap:16px;}
+    .wa-wrap{bottom:calc(16px + env(safe-area-inset-bottom)); right:calc(16px + env(safe-area-inset-right)); gap:8px;}
+    .wa-float{width:48px; height:48px;}
     .wa-bubble{display:none;}
   }
   @media (max-width:600px){
