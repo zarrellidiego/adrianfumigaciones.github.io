@@ -40,7 +40,8 @@
   header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1180px; margin:0 auto;}
   .logo{display:flex; align-items:center; gap:10px;}
-  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red);}
+  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red); overflow:hidden;}
+  .logo-mark img{width:100%; height:100%; object-fit:cover;}
   .logo-text{font-weight:800; font-size:1.25rem;}
   .logo-text span{color:var(--red);}
   .nav-links{display:flex; gap:30px; font-size:0.9rem; font-weight:600;}
@@ -60,7 +61,7 @@
   .menu-toggle span{display:block; width:22px; height:2px; border-radius:2px; background:var(--ink); margin:5px 0;}
 
   /* Hero */
-  .hero{padding:64px 0 0; overflow:hidden;}
+  .hero{padding:64px 0 0; overflow:hidden; position:relative;}
   .hero-card{
     background:linear-gradient(135deg, var(--red-tint), #fff 60%);
     border-radius:var(--r-lg); padding:64px 56px; position:relative; overflow:hidden;
@@ -209,8 +210,8 @@
   /* Ambient glow behind sections — subtle drifting motion throughout the page */
   .section{position:relative;}
   .ambient-glow{position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;}
-  .glow-dot{position:absolute; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle, rgba(218,42,42,0.10), transparent 70%); filter:blur(20px); animation:glow-drift 18s ease-in-out infinite;}
-  @keyframes glow-drift{0%,100%{transform:translate(0,0);} 50%{transform:translate(40px,-30px);}}
+  .glow-dot{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(218,42,42,0.22), transparent 70%); filter:blur(10px); animation:glow-drift 12s ease-in-out infinite;}
+  @keyframes glow-drift{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(60px,-45px) scale(1.15);}}
 
   .wa-float{position:fixed; bottom:26px; right:26px; z-index:60; background:#25D366; color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.25); transition:transform 0.2s;}
   .wa-float:hover{transform:scale(1.08);}
@@ -218,10 +219,10 @@
   /* Section divider — glowing pulse line */
   .divider{display:flex; align-items:center; gap:16px; padding:56px 0; max-width:1180px; margin:0 auto;}
   .divider-line{flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line) 40%, var(--line) 60%, transparent);}
-  .divider-mark{width:10px; height:10px; border-radius:50%; background:var(--red); position:relative; flex-shrink:0;}
+  .divider-mark{width:14px; height:14px; border-radius:50%; background:var(--red); position:relative; flex-shrink:0; box-shadow:0 0 0 4px rgba(218,42,42,0.12);}
   .divider-mark::before{content:""; position:absolute; inset:-8px; border-radius:50%; background:var(--red); opacity:0.25; animation:divider-pulse 2.2s ease-in-out infinite;}
   .divider-mark::after{content:""; position:absolute; inset:-16px; border-radius:50%; border:1px solid var(--red); opacity:0.3; animation:divider-pulse 2.2s ease-in-out infinite 0.3s;}
-  @keyframes divider-pulse{0%{transform:scale(0.6); opacity:0.35;} 70%,100%{transform:scale(1.7); opacity:0;}}
+  @keyframes divider-pulse{0%{transform:scale(0.6); opacity:0.5;} 70%,100%{transform:scale(2.4); opacity:0;}}
 
   /* Wave divider between tinted sections */
   .wave{display:block; width:100%; line-height:0; margin-top:-1px;}
@@ -233,7 +234,7 @@
   .spotlight{position:relative; isolation:isolate;}
   .spotlight::before{
     content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
-    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(218,42,42,0.16), transparent 70%);
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(218,42,42,0.24), transparent 70%);
     opacity:0; transition:opacity 0.3s ease;
   }
   .spotlight:hover::before{opacity:1;}
@@ -269,8 +270,7 @@
 <header id="siteHeader">
   <div class="nav">
     <div class="logo">
-      <!-- TODO: reemplazar por <img src="logo.png" alt="Adrián Fumigaciones" style="width:40px;height:40px;border-radius:50%"> -->
-      <div class="logo-mark">A</div>
+      <div class="logo-mark"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
       <div class="logo-text">Adrián <span>Fumigaciones</span></div>
     </div>
     <nav class="nav-links">
@@ -289,6 +289,7 @@
 </header>
 
 <section class="hero">
+  <div class="ambient-glow"><div class="glow-dot" style="top:-140px; right:-60px;"></div></div>
   <div class="wrap">
     <div class="hero-card reveal in">
       <div class="hero-grid">
@@ -306,19 +307,8 @@
           </div>
         </div>
         <div class="hero-visual">
-          <!-- TODO: reemplazar por <img src="fotos/trabajo1.jpg" alt="Aplicación de tratamiento" style="width:100%;height:100%;object-fit:cover"> -->
-          <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <radialGradient id="g1" cx="65%" cy="35%" r="75%">
-                <stop offset="0" stop-color="#3D2E2E"/>
-                <stop offset="1" stop-color="#1A1414"/>
-              </radialGradient>
-            </defs>
-            <rect width="500" height="500" fill="url(#g1)"/>
-            <circle cx="330" cy="180" r="60" fill="none" stroke="#DA2A2A" stroke-width="2" opacity="0.5"/>
-            <circle cx="330" cy="180" r="100" fill="none" stroke="#DA2A2A" stroke-width="1.5" opacity="0.3"/>
-          </svg>
-          <div class="float-tag"><span class="dot"></span><span>Foto real de trabajo — pendiente</span></div>
+          <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.19.jpeg" alt="Adrián Fumigaciones - trabajo en CABA y GBA" style="width:100%;height:100%;object-fit:cover;">
+          <div class="float-tag"><span class="dot"></span><span>Adrián Fumigaciones</span></div>
         </div>
       </div>
     </div>
@@ -346,12 +336,7 @@
   <div class="wrap">
     <div class="about-card reveal">
       <div class="about-frame">
-        <!-- TODO: reemplazar por <img src="fotos/equipo.jpg" alt="Equipo Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover"> -->
-        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-          <rect width="400" height="400" fill="#FFEEEE"/>
-          <circle cx="300" cy="100" r="90" fill="#DA2A2A" opacity="0.12"/>
-          <circle cx="100" cy="320" r="120" fill="#DA2A2A" opacity="0.1"/>
-        </svg>
+        <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="about-text">
         <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Nosotros</div>
@@ -458,10 +443,10 @@
       <p>Reemplazá cada bloque por una foto real de un trabajo terminado.</p>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.13 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (2).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.15 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
       <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
     </div>
@@ -547,7 +532,7 @@
         Facebook
       </a>
       <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.1.26 2.6.44a5.2 5.2 0 0 1 1.9 1.24 5.2 5.2 0 0 1 1.24 1.9c.18.5.38 1.4.44 2.6.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.26 2.1-.44 2.6a5.2 5.2 0 0 1-1.24 1.9 5.2 5.2 0 0 1-1.9 1.24c-.5.18-1.4.38-2.6.44-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.1-.26-2.6-.44a5.2 5.2 0 0 1-1.9-1.24 5.2 5.2 0 0 1-1.24-1.9c-.18-.5-.38-1.4-.44-2.6C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.26-2.1.44-2.6a5.2 5.2 0 0 1 1.24-1.9A5.2 5.2 0 0 1 5.85 1.36c.5-.18 1.4-.38 2.6-.44C9.75.86 10.15.85 12 .85m0 2.16c-3.14 0-3.5 0-4.75.07-1.02.05-1.57.22-1.94.36a3.05 3.05 0 0 0-1.13.73 3.05 3.05 0 0 0-.73 1.13c-.14.37-.31.92-.36 1.94-.06 1.25-.07 1.6-.07 4.75s0 3.5.07 4.75c.05 1.02.22 1.57.36 1.94.16.42.36.8.73 1.13.32.37.7.57 1.13.73.37.14.92.31 1.94.36 1.25.06 1.6.07 4.75.07s3.5 0 4.75-.07c1.02-.05 1.57-.22 1.94-.36a3.05 3.05 0 0 0 1.13-.73c.37-.33.57-.71.73-1.13.14-.37.31-.92.36-1.94.06-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.05-1.02-.22-1.57-.36-1.94a3.05 3.05 0 0 0-.73-1.13 3.05 3.05 0 0 0-1.13-.73c-.37-.14-.92-.31-1.94-.36-1.25-.06-1.6-.07-4.75-.07z"/></svg>
+        <svg viewBox="0 0 24 24" style="fill:none" stroke="#DA2A2A" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#DA2A2A" stroke="none"/></svg>
         Instagram
       </a>
       <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" class="social-link">
@@ -591,7 +576,7 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <div class="logo">
-        <div class="logo-mark">A</div>
+        <div class="logo-mark"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
         <div class="logo-text" style="color:#fff;">Adrián <span>Fumigaciones</span></div>
       </div>
       <p>Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs.</p>
@@ -600,7 +585,7 @@
           <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
         </a>
         <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.1.26 2.6.44a5.2 5.2 0 0 1 1.9 1.24 5.2 5.2 0 0 1 1.24 1.9c.18.5.38 1.4.44 2.6.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.26 2.1-.44 2.6a5.2 5.2 0 0 1-1.24 1.9 5.2 5.2 0 0 1-1.9 1.24c-.5.18-1.4.38-2.6.44-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.1-.26-2.6-.44a5.2 5.2 0 0 1-1.9-1.24 5.2 5.2 0 0 1-1.24-1.9c-.18-.5-.38-1.4-.44-2.6C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.26-2.1.44-2.6a5.2 5.2 0 0 1 1.24-1.9A5.2 5.2 0 0 1 5.85 1.36c.5-.18 1.4-.38 2.6-.44C9.75.86 10.15.85 12 .85m0 2.16c-3.14 0-3.5 0-4.75.07-1.02.05-1.57.22-1.94.36a3.05 3.05 0 0 0-1.13.73 3.05 3.05 0 0 0-.73 1.13c-.14.37-.31.92-.36 1.94-.06 1.25-.07 1.6-.07 4.75s0 3.5.07 4.75c.05 1.02.22 1.57.36 1.94.16.42.36.8.73 1.13.32.37.7.57 1.13.73.37.14.92.31 1.94.36 1.25.06 1.6.07 4.75.07s3.5 0 4.75-.07c1.02-.05 1.57-.22 1.94-.36a3.05 3.05 0 0 0 1.13-.73c.37-.33.57-.71.73-1.13.14-.37.31-.92.36-1.94.06-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.05-1.02-.22-1.57-.36-1.94a3.05 3.05 0 0 0-.73-1.13 3.05 3.05 0 0 0-1.13-.73c-.37-.14-.92-.31-1.94-.36-1.25-.06-1.6-.07-4.75-.07z"/></svg>
+          <svg viewBox="0 0 24 24" style="fill:none" stroke="#ffffff" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#ffffff" stroke="none"/></svg>
         </a>
         <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
