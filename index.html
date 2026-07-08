@@ -40,7 +40,8 @@
   header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1180px; margin:0 auto;}
   .logo{display:flex; align-items:center; gap:10px;}
-  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red);}
+  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red); overflow:hidden;}
+  .logo-mark img{width:100%; height:100%; object-fit:cover;}
   .logo-text{font-weight:800; font-size:1.25rem;}
   .logo-text span{color:var(--red);}
   .nav-links{display:flex; gap:30px; font-size:0.9rem; font-weight:600;}
@@ -269,8 +270,7 @@
 <header id="siteHeader">
   <div class="nav">
     <div class="logo">
-      <!-- TODO: reemplazar por <img src="logo.png" alt="Adrián Fumigaciones" style="width:40px;height:40px;border-radius:50%"> -->
-      <div class="logo-mark">A</div>
+      <div class="logo-mark"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
       <div class="logo-text">Adrián <span>Fumigaciones</span></div>
     </div>
     <nav class="nav-links">
@@ -307,19 +307,8 @@
           </div>
         </div>
         <div class="hero-visual">
-          <!-- TODO: reemplazar por <img src="fotos/trabajo1.jpg" alt="Aplicación de tratamiento" style="width:100%;height:100%;object-fit:cover"> -->
-          <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <radialGradient id="g1" cx="65%" cy="35%" r="75%">
-                <stop offset="0" stop-color="#3D2E2E"/>
-                <stop offset="1" stop-color="#1A1414"/>
-              </radialGradient>
-            </defs>
-            <rect width="500" height="500" fill="url(#g1)"/>
-            <circle cx="330" cy="180" r="60" fill="none" stroke="#DA2A2A" stroke-width="2" opacity="0.5"/>
-            <circle cx="330" cy="180" r="100" fill="none" stroke="#DA2A2A" stroke-width="1.5" opacity="0.3"/>
-          </svg>
-          <div class="float-tag"><span class="dot"></span><span>Foto real de trabajo — pendiente</span></div>
+          <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.19.jpeg" alt="Adrián Fumigaciones - trabajo en CABA y GBA" style="width:100%;height:100%;object-fit:cover;">
+          <div class="float-tag"><span class="dot"></span><span>Adrián Fumigaciones</span></div>
         </div>
       </div>
     </div>
@@ -347,12 +336,7 @@
   <div class="wrap">
     <div class="about-card reveal">
       <div class="about-frame">
-        <!-- TODO: reemplazar por <img src="fotos/equipo.jpg" alt="Equipo Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover"> -->
-        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-          <rect width="400" height="400" fill="#FFEEEE"/>
-          <circle cx="300" cy="100" r="90" fill="#DA2A2A" opacity="0.12"/>
-          <circle cx="100" cy="320" r="120" fill="#DA2A2A" opacity="0.1"/>
-        </svg>
+        <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="about-text">
         <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Nosotros</div>
@@ -459,10 +443,10 @@
       <p>Reemplazá cada bloque por una foto real de un trabajo terminado.</p>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.13 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (2).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.15 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
       <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
     </div>
@@ -592,7 +576,7 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <div class="logo">
-        <div class="logo-mark">A</div>
+        <div class="logo-mark"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
         <div class="logo-text" style="color:#fff;">Adrián <span>Fumigaciones</span></div>
       </div>
       <p>Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs.</p>
