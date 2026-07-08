@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrián Fumigaciones — Control de plagas en CABA y GBA</title>
+<meta name="description" content="Fumigación y control de plagas en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs. Respuesta rápida por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#DA2A2A;
+    --red-dark:#B81F1F;
+    --red-tint:#FFEEEE;
+    --ink:#221D1D;
+    --ink-soft:#6B6262;
+    --bg:#FFFFFF;
+    --bg-tint:#FFF6F5;
+    --line:rgba(34,29,29,0.08);
+    --shadow-sm:0 4px 14px rgba(34,29,29,0.06);
+    --shadow-md:0 14px 34px rgba(34,29,29,0.1);
+    --shadow-red:0 12px 26px rgba(218,42,42,0.28);
+    --r-lg:26px;
+    --r-md:18px;
+    --r-sm:12px;
+    --r-pill:999px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; line-height:1.12; letter-spacing:-0.02em; color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  svg{display:block;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+
+  header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1180px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red);}
+  .logo-text{font-weight:800; font-size:1.25rem;}
+  .logo-text span{color:var(--red);}
+  .nav-links{display:flex; gap:30px; font-size:0.9rem; font-weight:600;}
+  .nav-links a{color:var(--ink-soft); transition:color 0.2s;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-cta{display:flex; align-items:center; gap:12px;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--r-pill); font-weight:700; font-size:0.88rem; border:2px solid transparent; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--red); color:#fff; box-shadow:var(--shadow-red);}
+  .btn-primary:hover{background:var(--red-dark); box-shadow:0 16px 32px rgba(218,42,42,0.35);}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:#fff;}
+  .btn-outline:hover{border-color:var(--red); color:var(--red);}
+  .btn-sm{padding:11px 20px; font-size:0.82rem;}
+  .btn-lg{padding:18px 34px; font-size:1rem;}
+
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .menu-toggle span{display:block; width:22px; height:2px; border-radius:2px; background:var(--ink); margin:5px 0;}
+
+  /* Hero */
+  .hero{padding:64px 0 0; overflow:hidden; position:relative;}
+  .hero-card{
+    background:linear-gradient(135deg, var(--red-tint), #fff 60%);
+    border-radius:var(--r-lg); padding:64px 56px; position:relative; overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; position:relative; z-index:1;}
+  .pill-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; padding:9px 18px; border-radius:var(--r-pill); font-size:0.8rem; font-weight:700; color:var(--red); box-shadow:var(--shadow-sm); margin-bottom:22px;}
+  .pill-badge svg{width:14px; height:14px; fill:var(--red);}
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom:20px;}
+  .hero h1 span{color:var(--red);}
+  .hero .lede{font-size:1.08rem; color:var(--ink-soft); max-width:42ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-mini-badges{display:flex; gap:12px; flex-wrap:wrap;}
+  .mini-badge{display:flex; align-items:center; gap:8px; background:#fff; padding:10px 16px; border-radius:var(--r-pill); font-size:0.8rem; font-weight:600; box-shadow:var(--shadow-sm);}
+  .mini-badge svg{width:16px; height:16px; stroke:var(--red); fill:none; stroke-width:2;}
+
+  .hero-visual{
+    aspect-ratio:1/1; border-radius:var(--r-lg); overflow:hidden; position:relative;
+    background:linear-gradient(160deg, #2B2222, #1A1414); box-shadow:var(--shadow-md);
+  }
+  .hero-visual svg{width:100%; height:100%;}
+  .hero-visual .float-tag{
+    position:absolute; bottom:20px; left:20px; right:20px; background:#fff; border-radius:var(--r-md);
+    padding:16px 20px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:12px;
+  }
+  .float-tag .dot{width:10px; height:10px; border-radius:50%; background:var(--red); flex-shrink:0;}
+  .float-tag span{font-size:0.82rem; font-weight:600; color:var(--ink-soft);}
+
+  /* Trust badges row */
+  .trust-row{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:-30px; position:relative; z-index:2;}
+  .trust-card{
+    background:#fff; border-radius:var(--r-md); padding:20px 26px; box-shadow:var(--shadow-md);
+    display:flex; align-items:center; gap:14px; flex:1; min-width:230px;
+  }
+  .trust-card .ic{width:44px; height:44px; border-radius:50%; background:var(--red-tint); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .trust-card .ic svg{width:22px; height:22px; stroke:var(--red); fill:none; stroke-width:1.8;}
+  .trust-card strong{display:block; font-size:0.92rem; font-weight:700;}
+  .trust-card span{font-size:0.78rem; color:var(--ink-soft);}
+
+  .section{padding:100px 0 0;}
+  .section.tight{padding:76px 0 0;}
+  .section-head{max-width:600px; margin:0 auto 52px; text-align:center;}
+  .section-head .pill-badge{margin-left:auto; margin-right:auto;}
+  .section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.5rem); margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft); font-size:1.02rem;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{opacity:0; transform:translateY(18px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal-stagger.in > *{opacity:1; transform:translateY(0);}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.03s;} .reveal-stagger.in > *:nth-child(2){transition-delay:.08s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.13s;} .reveal-stagger.in > *:nth-child(4){transition-delay:.18s;}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.23s;} .reveal-stagger.in > *:nth-child(6){transition-delay:.28s;}
+
+  /* Nosotros */
+  .about-card{background:var(--bg-tint); border-radius:var(--r-lg); padding:56px; display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;}
+  .about-frame{aspect-ratio:1/1; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-md);}
+  .about-frame svg{width:100%; height:100%;}
+  .about-text p{color:var(--ink-soft); margin-bottom:16px; font-size:1.02rem;}
+  .about-stats{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px;}
+  .about-stat{background:#fff; border-radius:var(--r-md); padding:16px 22px; box-shadow:var(--shadow-sm); flex:1; min-width:130px;}
+  .about-stat strong{display:block; font-size:1.4rem; font-weight:800; color:var(--red);}
+  .about-stat span{font-size:0.78rem; color:var(--ink-soft);}
+
+  /* Servicios */
+  .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .service-card{background:#fff; border-radius:var(--r-md); padding:32px 26px; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s ease, transform 0.25s ease; border:1px solid var(--line);}
+  .service-card:hover{box-shadow:var(--shadow-md); transform:translateY(-6px);}
+  .service-icon{width:52px; height:52px; border-radius:50%; background:var(--red-tint); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .service-icon svg{width:24px; height:24px; stroke:var(--red); fill:none; stroke-width:1.6;}
+  .service-card h3{font-size:1.05rem; margin-bottom:8px; font-weight:700;}
+  .service-card p{font-size:0.88rem; color:var(--ink-soft);}
+
+  /* Antes y despues */
+  .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;}
+  .ba-card{background:#fff; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s ease, transform 0.25s ease;}
+  .ba-card:hover{box-shadow:var(--shadow-md); transform:translateY(-4px);}
+  .ba-images{display:grid; grid-template-columns:1fr 1fr;}
+  .ba-img{aspect-ratio:1/1; position:relative;}
+  .ba-img svg{width:100%; height:100%;}
+  .ba-label{position:absolute; top:12px; left:12px; font-size:0.68rem; font-weight:700; background:#fff; color:var(--ink); padding:5px 12px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
+  .ba-img.after .ba-label{background:var(--red); color:#fff;}
+  .ba-caption{padding:16px 20px; font-size:0.86rem; color:var(--ink-soft); font-weight:600;}
+
+  /* Trabajos */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
+  .gallery-item{aspect-ratio:1/1; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform 0.3s ease, box-shadow 0.3s ease;}
+  .gallery-item:hover{transform:translateY(-4px) scale(1.02); box-shadow:var(--shadow-md);}
+  .gallery-item svg{width:100%; height:100%;}
+
+  /* Proceso */
+  .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
+  .process-step{background:#fff; border-radius:var(--r-md); padding:28px 24px; box-shadow:var(--shadow-sm); position:relative;}
+  .process-step .num{position:absolute; top:-14px; left:24px; width:32px; height:32px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.85rem; box-shadow:var(--shadow-red);}
+  .process-step h3{font-size:1rem; margin-top:14px; margin-bottom:8px; font-weight:700;}
+  .process-step p{font-size:0.86rem; color:var(--ink-soft);}
+
+  .tags-wrap{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
+  .tag{padding:11px 20px; background:#fff; border-radius:var(--r-pill); font-size:0.86rem; font-weight:600; color:var(--ink-soft); box-shadow:var(--shadow-sm); transition:color 0.2s, box-shadow 0.2s;}
+  .tag:hover{color:var(--red); box-shadow:var(--shadow-md);}
+
+  /* FAQ */
+  .faq{max-width:780px; margin:0 auto;}
+  .faq-item{background:#fff; border-radius:var(--r-md); box-shadow:var(--shadow-sm); margin-bottom:14px; overflow:hidden;}
+  .faq-q{width:100%; text-align:left; background:none; border:none; padding:22px 26px; display:flex; justify-content:space-between; align-items:center; gap:20px; font-weight:700; font-size:1rem; cursor:pointer;}
+  .faq-q .plus{font-size:1.4rem; font-weight:400; transition:transform 0.3s; color:var(--red); flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height 0.3s ease;}
+  .faq-a-inner{padding:0 26px 22px; font-size:0.92rem; color:var(--ink-soft);}
+
+  /* Redes */
+  .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .social-link{display:flex; align-items:center; gap:10px; padding:15px 26px; background:#fff; border-radius:var(--r-pill); font-weight:700; font-size:0.88rem; box-shadow:var(--shadow-sm); transition:transform 0.2s, box-shadow 0.2s;}
+  .social-link:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
+  .social-link svg{width:18px; height:18px; fill:var(--red);}
+
+  /* Contacto */
+  .contact-card-big{background:linear-gradient(135deg, var(--ink), #362A2A); border-radius:var(--r-lg); padding:64px 56px; color:#fff; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; margin-bottom:80px;}
+  .contact-card-big h2{color:#fff; font-size:clamp(1.9rem, 3.2vw, 2.5rem); margin-bottom:16px;}
+  .contact-card-big p{color:rgba(255,255,255,0.65); margin-bottom:28px; max-width:44ch;}
+  .contact-info{background:rgba(255,255,255,0.08); border-radius:var(--r-md); padding:28px;}
+  .contact-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:0.9rem;}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row span:first-child{color:rgba(255,255,255,0.5);}
+  .contact-row span:last-child{font-weight:700; text-align:right;}
+
+  .site-footer{background:var(--ink); color:rgba(255,255,255,0.6); padding:0 0 32px; margin-top:-1px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 0.8fr 1fr; gap:56px; padding:56px 0 48px;}
+  .footer-brand .logo{margin-bottom:18px;}
+  .footer-brand .logo-text span{color:var(--red);}
+  .footer-brand p{font-size:0.9rem; line-height:1.7; max-width:36ch; margin-bottom:22px; color:rgba(255,255,255,0.55);}
+  .footer-social{display:flex; gap:12px;}
+  .footer-social a{width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 0.2s, transform 0.2s;}
+  .footer-social a:hover{background:var(--red); transform:translateY(-3px);}
+  .footer-social svg{width:16px; height:16px; fill:#fff;}
+  .footer-col h4{color:#fff; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;}
+  .footer-col{display:flex; flex-direction:column; gap:13px; font-size:0.9rem;}
+  .footer-col a{transition:color 0.2s;}
+  .footer-col a:hover{color:var(--red);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.82rem;}
+  .credit{display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:var(--r-pill); background:rgba(255,255,255,0.08); transition:background 0.2s, transform 0.2s;}
+  .credit:hover{background:var(--red); transform:translateY(-2px);}
+  .credit span{font-weight:700; color:#fff;}
+
+  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr; gap:36px;} }
+
+  /* Ambient glow behind sections — subtle drifting motion throughout the page */
+  .section{position:relative;}
+  .ambient-glow{position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;}
+  .glow-dot{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(218,42,42,0.22), transparent 70%); filter:blur(10px); animation:glow-drift 12s ease-in-out infinite;}
+  @keyframes glow-drift{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(60px,-45px) scale(1.15);}}
+
+  .wa-float{position:fixed; bottom:26px; right:26px; z-index:60; background:#25D366; color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.25); transition:transform 0.2s;}
+  .wa-float:hover{transform:scale(1.08);}
+
+  /* Section divider — glowing pulse line */
+  .divider{display:flex; align-items:center; gap:16px; padding:56px 0; max-width:1180px; margin:0 auto;}
+  .divider-line{flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line) 40%, var(--line) 60%, transparent);}
+  .divider-mark{width:14px; height:14px; border-radius:50%; background:var(--red); position:relative; flex-shrink:0; box-shadow:0 0 0 4px rgba(218,42,42,0.12);}
+  .divider-mark::before{content:""; position:absolute; inset:-8px; border-radius:50%; background:var(--red); opacity:0.25; animation:divider-pulse 2.2s ease-in-out infinite;}
+  .divider-mark::after{content:""; position:absolute; inset:-16px; border-radius:50%; border:1px solid var(--red); opacity:0.3; animation:divider-pulse 2.2s ease-in-out infinite 0.3s;}
+  @keyframes divider-pulse{0%{transform:scale(0.6); opacity:0.5;} 70%,100%{transform:scale(2.4); opacity:0;}}
+
+  /* Wave divider between tinted sections */
+  .wave{display:block; width:100%; line-height:0; margin-top:-1px;}
+  .wave svg{width:100%; height:64px; display:block;}
+  .wave-shimmer{stroke-dasharray:14 10; animation:wave-shimmer 3.5s linear infinite;}
+  @keyframes wave-shimmer{to{stroke-dashoffset:-48;}}
+
+  /* Spotlight hover — glow follows the cursor behind the card */
+  .spotlight{position:relative; isolation:isolate;}
+  .spotlight::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(218,42,42,0.24), transparent 70%);
+    opacity:0; transition:opacity 0.3s ease;
+  }
+  .spotlight:hover::before{opacity:1;}
+  .spotlight{transition:transform 0.25s ease;}
+
+  @media (max-width:960px){
+    .nav-links, .nav-cta .btn-outline{display:none;}
+    .menu-toggle{display:block;}
+    .hero-grid, .about-card, .contact-card-big{grid-template-columns:1fr;}
+    .hero-card{padding:44px 28px;}
+    .about-card{padding:36px 28px;}
+    .contact-card-big{padding:44px 28px;}
+    .trust-row{margin-top:24px;}
+    .process-grid, .services-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .process-grid, .services-grid, .gallery-grid{grid-template-columns:1fr;}
+    .contact-row{flex-direction:column; gap:4px;}
+    .contact-row span:last-child{text-align:left;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+    .reveal, .reveal-stagger > *{opacity:1 !important; transform:none !important;}
+    .divider-mark::before, .divider-mark::after, .wave-shimmer, .glow-dot{animation:none !important;}
+    .spotlight::before{display:none;}
+  }
+  :focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav">
+    <div class="logo">
+      <!-- TODO: reemplazar por <img src="logo.png" alt="Adrián Fumigaciones" style="width:40px;height:40px;border-radius:50%"> -->
+      <div class="logo-mark">A</div>
+      <div class="logo-text">Adrián <span>Fumigaciones</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:1138762463" class="btn btn-outline btn-sm">Llamar</a>
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" class="btn btn-primary btn-sm" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú" id="menuToggle"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="ambient-glow"><div class="glow-dot" style="top:-140px; right:-60px;"></div></div>
+  <div class="wrap">
+    <div class="hero-card reveal in">
+      <div class="hero-grid">
+        <div>
+          <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Turnos esta semana</div>
+          <h1>Fumigación profesional, <span>rápida y sin vueltas.</span></h1>
+          <p class="lede">Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Coordinás por WhatsApp y listo.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Coordinar por WhatsApp</a>
+            <a href="#servicios" class="btn btn-outline btn-lg">Ver servicios</a>
+          </div>
+          <div class="hero-mini-badges">
+            <div class="mini-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Lun a Sáb, 9 a 18 hs</div>
+            <div class="mini-badge"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Todos los medios de pago</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <!-- TODO: reemplazar por <img src="fotos/trabajo1.jpg" alt="Aplicación de tratamiento" style="width:100%;height:100%;object-fit:cover"> -->
+          <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <radialGradient id="g1" cx="65%" cy="35%" r="75%">
+                <stop offset="0" stop-color="#3D2E2E"/>
+                <stop offset="1" stop-color="#1A1414"/>
+              </radialGradient>
+            </defs>
+            <rect width="500" height="500" fill="url(#g1)"/>
+            <circle cx="330" cy="180" r="60" fill="none" stroke="#DA2A2A" stroke-width="2" opacity="0.5"/>
+            <circle cx="330" cy="180" r="100" fill="none" stroke="#DA2A2A" stroke-width="1.5" opacity="0.3"/>
+          </svg>
+          <div class="float-tag"><span class="dot"></span><span>Foto real de trabajo — pendiente</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-row reveal-stagger reveal in">
+      <div class="trust-card spotlight">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg></div>
+        <div><strong>Productos aprobados</strong><span>Seguros para familia y mascotas</span></div>
+      </div>
+      <div class="trust-card spotlight">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <div><strong>Respuesta rápida</strong><span>Coordinás por WhatsApp</span></div>
+      </div>
+      <div class="trust-card spotlight">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div>
+        <div><strong>Todos los medios de pago</strong><span>Efectivo, transferencia, Mercado Pago</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section" id="nosotros">
+  <div class="wrap">
+    <div class="about-card reveal">
+      <div class="about-frame">
+        <!-- TODO: reemplazar por <img src="fotos/equipo.jpg" alt="Equipo Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover"> -->
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="400" fill="#FFEEEE"/>
+          <circle cx="300" cy="100" r="90" fill="#DA2A2A" opacity="0.12"/>
+          <circle cx="100" cy="320" r="120" fill="#DA2A2A" opacity="0.1"/>
+        </svg>
+      </div>
+      <div class="about-text">
+        <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Nosotros</div>
+        <h2>Quiénes somos</h2>
+        <p>Adrián Fumigaciones ofrece control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Trabajamos con productos aprobados y una metodología clara: diagnóstico, aplicación y seguimiento.</p>
+        <p>Cada visita se coordina directamente por WhatsApp, sin intermediarios, con respuesta rápida y atención personalizada de lunes a sábados.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>9–18h</strong><span>Lunes a sábados</span></div>
+          <div class="about-stat"><strong>8+</strong><span>Plagas tratadas</span></div>
+          <div class="about-stat"><strong>CABA/GBA</strong><span>Cobertura</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section" id="servicios">
+  <div class="ambient-glow"><div class="glow-dot" style="top:-80px; right:-100px;"></div></div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Servicios</div>
+      <h2>Qué plagas eliminamos</h2>
+      <p>Tratamiento específico según el tipo de plaga y el nivel de infestación.</p>
+    </div>
+    <div class="services-grid reveal-stagger reveal">
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="7" ry="5"/><path d="M6 10 3 7M18 10l3-3M9 8V5M15 8V5"/></svg></div>
+        <h3>Cucarachas</h3>
+        <p>Líquidos, sólidos, aerosoles y aplicación con jeringa según el nivel de infestación.</p>
+      </div>
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><circle cx="14" cy="13" r="3.2"/><circle cx="18" cy="19" r="2"/><path d="M10 9.5 12 11M16 15l1.5 2.5"/></svg></div>
+        <h3>Hormigas</h3>
+        <p>Tratamiento de nidos y barreras perimetrales para evitar que vuelvan a entrar.</p>
+      </div>
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="3.2"/><path d="M12 14v6M6 8l3 2M18 8l-3 2M6 13h3M18 13h-3M7 18l3.5-2.5M17 18l-3.5-2.5"/></svg></div>
+        <h3>Arañas</h3>
+        <p>Control en interiores y exteriores, con foco en zonas de difícil acceso.</p>
+      </div>
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="12" rx="6" ry="3.4" transform="rotate(-20 10 12)"/><path d="M15 10c2-1 4-.5 5 1M15 13c2 1 4 .8 5-.5"/></svg></div>
+        <h3>Mosquitos y moscas</h3>
+        <p>Reducción de focos de cría, clave para prevenir el dengue en temporada cálida.</p>
+      </div>
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M9 8.5 7 6M15 8.5l2-2.5M8 15l-2 2M16 15l2 2"/></svg></div>
+        <h3>Pulgas y garrapatas</h3>
+        <p>Tratamientos seguros para hogares con mascotas.</p>
+      </div>
+      <div class="service-card spotlight">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="11" cy="13" rx="6" ry="4"/><path d="M17 12l4-2M6 10 3 8M9 17l-1 3M13 17l1 3"/><circle cx="14.5" cy="11" r="0.6" fill="currentColor"/></svg></div>
+        <h3>Ratas y ratones</h3>
+        <p>Desratización discreta en interiores y exteriores, sin olores ni riesgos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:#fff;">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+    <path d="M0,32 C 240,64 480,0 720,32 C 960,64 1200,0 1440,32 L1440,64 L0,64 Z" fill="#FFF6F5"/>
+    <path class="wave-shimmer" d="M0,32 C 240,64 480,0 720,32 C 960,64 1200,0 1440,32" fill="none" stroke="#DA2A2A" stroke-width="2" opacity="0.35"/>
+  </svg>
+</div>
+<section class="section tight" id="antes-despues" style="background:#FFF6F5; padding-top:64px;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Resultados</div>
+      <h2>Antes y después</h2>
+      <p>Reemplazá estos bloques por fotos reales de tus trabajos apenas las tengas a mano.</p>
+    </div>
+    <div class="ba-grid reveal-stagger reveal">
+      <div class="ba-card spotlight">
+        <div class="ba-images">
+          <div class="ba-img"><span class="ba-label">Antes</span><svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#F3EFEF"/></svg></div>
+          <div class="ba-img after"><span class="ba-label">Después</span><svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFEEEE"/></svg></div>
+        </div>
+        <div class="ba-caption">Cocina — tratamiento de cucarachas</div>
+      </div>
+      <div class="ba-card spotlight">
+        <div class="ba-images">
+          <div class="ba-img"><span class="ba-label">Antes</span><svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#F3EFEF"/></svg></div>
+          <div class="ba-img after"><span class="ba-label">Después</span><svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFEEEE"/></svg></div>
+        </div>
+        <div class="ba-caption">Patio — control de hormigas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:#FFF6F5; transform:scaleY(-1);">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+    <path d="M0,32 C 240,0 480,64 720,32 C 960,0 1200,64 1440,32 L1440,64 L0,64 Z" fill="#fff"/>
+  </svg>
+</div>
+<section class="section" id="trabajos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Trabajos</div>
+      <h2>Trabajos realizados</h2>
+      <p>Reemplazá cada bloque por una foto real de un trabajo terminado.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
+      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section tight" id="proceso">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Proceso</div>
+      <h2>Cómo trabajamos</h2>
+    </div>
+    <div class="process-grid reveal-stagger reveal">
+      <div class="process-step spotlight"><span class="num">1</span><h3>Contacto</h3><p>Nos escribís por WhatsApp y coordinamos día y horario.</p></div>
+      <div class="process-step spotlight"><span class="num">2</span><h3>Diagnóstico</h3><p>Evaluamos el tipo de plaga y el nivel de infestación.</p></div>
+      <div class="process-step spotlight"><span class="num">3</span><h3>Aplicación</h3><p>Productos aprobados, seguros para personas y mascotas.</p></div>
+      <div class="process-step spotlight"><span class="num">4</span><h3>Seguimiento</h3><p>Recomendamos frecuencia de mantenimiento si hace falta.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section" id="cobertura">
+  <div class="ambient-glow"><div class="glow-dot" style="bottom:-100px; left:-80px;"></div></div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Cobertura</div>
+      <h2>A dónde llegamos</h2>
+      <p>CABA y todo el Gran Buenos Aires: casas, departamentos, locales, oficinas, jardines, countries e instituciones.</p>
+    </div>
+    <div class="tags-wrap reveal">
+      <span class="tag">Once</span><span class="tag">Flores</span><span class="tag">Lomas de Zamora</span><span class="tag">Temperley</span><span class="tag">Monte Grande</span>
+      <span class="tag">Ezeiza</span><span class="tag">Glew</span><span class="tag">Alejandro Korn</span><span class="tag">Máximo Paz</span><span class="tag">Cañuelas</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section tight" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Dudas frecuentes</div>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="faq-q">¿Es seguro para mascotas y niños?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Usamos productos aprobados y aplicamos con responsabilidad. Aun así, recomendamos ventilar el espacio y evitar el contacto directo durante algunas horas después del tratamiento.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cuánto dura el efecto del tratamiento?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Depende del tipo de plaga, pero en general el efecto se prolonga varias semanas. En algunos casos conviene un plan de fumigaciones periódicas.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿En qué tipo de espacios trabajan?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Casas, departamentos, locales comerciales, oficinas, terrenos, jardines, countries e instituciones como cocinas industriales, consorcios, mayoristas e iglesias.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo pido un turno?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Escribinos por WhatsApp y coordinamos día y horario a la brevedad.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo puedo pagar?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Aceptamos todos los medios de pago: efectivo, transferencia y Mercado Pago.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="redes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Redes</div>
+      <h2>Seguinos</h2>
+    </div>
+    <div class="social-row reveal">
+      <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" class="social-link">
+        <svg viewBox="0 0 24 24" style="fill:none" stroke="#DA2A2A" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#DA2A2A" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"><span class="divider-line"></span><span class="divider-mark"></span><span class="divider-line"></span></div></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-card-big reveal" id="contacto">
+      <div>
+        <h2>Escribinos y coordinamos tu turno</h2>
+        <p>Respuesta rápida por WhatsApp, de lunes a sábados. Contanos qué plaga tenés y el tipo de espacio.</p>
+        <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+      <div class="contact-info">
+        <div class="contact-row"><span>WhatsApp</span><span>11 3876-2463</span></div>
+        <div class="contact-row"><span>Email</span><span>consultas@adrianfumigaciones.com</span></div>
+        <div class="contact-row"><span>Horario</span><span>Lun a Sáb, 9 a 18 hs</span></div>
+        <div class="contact-row"><span>Zona</span><span>CABA / GBA</span></div>
+        <div class="contact-row"><span>Web</span><span>adrianfumigaciones.site</span></div>
+        <div class="contact-row"><span>Pagos</span><span>Todos los medios</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="wave" style="background:#fff;">
+    <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+      <path d="M0,32 C 240,64 480,0 720,32 C 960,64 1200,0 1440,32 L1440,64 L0,64 Z" fill="var(--ink)"/>
+      <path class="wave-shimmer" d="M0,32 C 240,64 480,0 720,32 C 960,64 1200,0 1440,32" fill="none" stroke="#DA2A2A" stroke-width="2" opacity="0.4"/>
+    </svg>
+  </div>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">A</div>
+        <div class="logo-text" style="color:#fff;">Adrián <span>Fumigaciones</span></div>
+      </div>
+      <p>Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" style="fill:none" stroke="#ffffff" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#ffffff" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener">WhatsApp: 11 3876-2463</a>
+      <a href="mailto:consultas@adrianfumigaciones.com">consultas@adrianfumigaciones.com</a>
+      <span>Lunes a sábados, 9 a 18 hs</span>
+      <span>CABA y Gran Buenos Aires</span>
+      <span>adrianfumigaciones.site</span>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© 2026 Adrián Fumigaciones. Todos los derechos reservados.</span>
+    <a href="https://wa.me/5491135679728?text=Hola%20Diego!%20Vi%20la%20p%C3%A1gina%20de%20Adri%C3%A1n%20Fumigaciones%20y%20quiero%20consultar%20por%20una%20p%C3%A1gina%20para%20mi%20negocio" target="_blank" rel="noopener" class="credit">Página realizada por <span>Diego Z</span></a>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="27" height="27" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.11.32.02.51-.09.19-.13.31-.26.47-.13.16-.28.36-.4.48-.13.13-.27.28-.12.55.15.28.68 1.13 1.47 1.83 1.01.9 1.86 1.18 2.14 1.31.28.13.44.11.6-.07.17-.18.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => {
+    const show = navLinks.style.display !== 'flex';
+    navLinks.style.display = show ? 'flex' : 'none';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '72px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = '#fff';
+    navLinks.style.padding = '22px 28px';
+    navLinks.style.gap = '16px';
+    navLinks.style.borderBottom = '1px solid rgba(34,29,29,0.08)';
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+
+  // Spotlight hover glow — follows the cursor behind each card
+  if (!window.matchMedia('(hover: none)').matches){
+    document.querySelectorAll('.spotlight').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
