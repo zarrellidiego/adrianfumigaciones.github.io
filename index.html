@@ -12,16 +12,19 @@
   :root{
     --red:#DA2A2A;
     --red-dark:#B81F1F;
+    --wa-green:#25D366;
+    --wa-green-dark:#1DA851;
     --red-tint:#FFEEEE;
     --neutral-tint:#F1EEEC;
     --ink:#221D1D;
-    --ink-soft:#6B6262;
+    --ink-soft:#4A4444;
     --bg:#FFFFFF;
-    --bg-tint:#FFF6F5;
+    --bg-tint:#FBE9E7;
     --line:rgba(34,29,29,0.08);
     --shadow-sm:0 4px 14px rgba(34,29,29,0.06);
     --shadow-md:0 14px 34px rgba(34,29,29,0.1);
     --shadow-red:0 10px 20px rgba(218,42,42,0.16);
+    --shadow-green:0 10px 22px rgba(37,211,102,0.35);
     --r-lg:26px;
     --r-md:18px;
     --r-sm:12px;
@@ -29,9 +32,10 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{background:var(--bg); color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  body{background:var(--bg); background-image:radial-gradient(circle, rgba(34,29,29,0.07) 1px, transparent 1px); background-size:24px 24px; color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
   h1,h2,h3{font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; line-height:1.12; letter-spacing:-0.02em; color:var(--ink);}
   a{color:inherit; text-decoration:none;}
+  p{font-weight:500;}
   ul{list-style:none;}
   img{max-width:100%; display:block;}
   svg{display:block;}
@@ -41,21 +45,21 @@
   header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1180px; margin:0 auto;}
   .logo{display:flex; align-items:center; gap:10px;}
-  .logo-mark{width:40px; height:40px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem; box-shadow:var(--shadow-red); overflow:hidden;}
+  .logo-mark{width:58px; height:58px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.5rem; box-shadow:var(--shadow-red); overflow:hidden; border:2px solid #fff; outline:1px solid var(--line);}
   .logo-mark img{width:100%; height:100%; object-fit:cover;}
-  .logo-text{font-weight:800; font-size:1.25rem;}
+  .logo-text{font-weight:800; font-size:1.55rem;}
   .logo-text span{color:var(--red);}
-  .nav-links{display:flex; gap:30px; font-size:0.9rem; font-weight:600;}
+  .nav-links{display:flex; gap:30px; font-size:1rem; font-weight:600;}
   .nav-links a{color:var(--ink-soft); transition:color 0.2s;}
   .nav-links a:hover{color:var(--red);}
   .nav-cta{display:flex; align-items:center; gap:12px;}
-  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--r-pill); font-weight:700; font-size:0.88rem; border:2px solid transparent; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--r-pill); font-weight:700; font-size:0.97rem; border:2px solid transparent; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;}
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--red); color:#fff; box-shadow:var(--shadow-red);}
-  .btn-primary:hover{background:var(--red-dark); box-shadow:0 16px 32px rgba(218,42,42,0.35);}
-  .btn-outline{border-color:var(--ink); color:var(--ink); background:#fff;}
+  .btn-primary{background:var(--wa-green); color:#fff; box-shadow:var(--shadow-green);}
+  .btn-primary:hover{background:var(--wa-green-dark); box-shadow:0 16px 32px rgba(37,211,102,0.4);}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:#fff; border-width:2.5px; font-weight:800;}
   .btn-outline:hover{border-color:var(--red); color:var(--red);}
-  .btn-sm{padding:11px 20px; font-size:0.82rem;}
+  .btn-sm{padding:11px 20px; font-size:1.02rem;}
   .btn-lg{padding:18px 34px; font-size:1rem;}
 
   .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
@@ -64,18 +68,19 @@
   /* Hero */
   .hero{padding:64px 0 0; overflow:hidden; position:relative;}
   .hero-card{
-    background:linear-gradient(135deg, var(--red-tint), #fff 60%);
+    background:linear-gradient(135deg, var(--red-tint) 0%, #FDF3F2 45%, #fff 85%);
+    border:1px solid var(--line);
     border-radius:var(--r-lg); padding:64px 56px; position:relative; overflow:hidden;
   }
   .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; position:relative; z-index:1;}
-  .pill-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; padding:9px 18px; border-radius:var(--r-pill); font-size:0.8rem; font-weight:700; color:var(--red); box-shadow:var(--shadow-sm); margin-bottom:22px;}
+  .pill-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; padding:9px 18px; border-radius:var(--r-pill); font-size:1rem; font-weight:700; color:var(--red); box-shadow:var(--shadow-sm); margin-bottom:22px;}
   .pill-badge svg{width:14px; height:14px; fill:var(--red);}
   .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom:20px;}
   .hero h1 span{color:var(--red);}
-  .hero .lede{font-size:1.08rem; color:var(--ink-soft); max-width:42ch; margin-bottom:32px;}
+  .hero .lede{font-size:1.15rem; color:var(--ink-soft); max-width:42ch; margin-bottom:32px; font-weight:600;}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
   .hero-mini-badges{display:flex; gap:12px; flex-wrap:wrap;}
-  .mini-badge{display:flex; align-items:center; gap:8px; background:#fff; padding:10px 16px; border-radius:var(--r-pill); font-size:0.8rem; font-weight:600; box-shadow:var(--shadow-sm);}
+  .mini-badge{display:flex; align-items:center; gap:8px; background:#fff; padding:10px 16px; border-radius:var(--r-pill); font-size:1rem; font-weight:600; box-shadow:var(--shadow-sm);}
   .mini-badge svg{width:16px; height:16px; stroke:var(--red); fill:none; stroke-width:2;}
 
   .hero-visual{
@@ -88,7 +93,7 @@
     padding:16px 20px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:12px;
   }
   .float-tag .dot{width:10px; height:10px; border-radius:50%; background:var(--red); flex-shrink:0;}
-  .float-tag span{font-size:0.82rem; font-weight:600; color:var(--ink-soft);}
+  .float-tag span{font-size:1.02rem; font-weight:600; color:var(--ink-soft);}
 
   /* Trust badges row */
   .trust-row{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:-30px; position:relative; z-index:2;}
@@ -98,8 +103,8 @@
   }
   .trust-card .ic{width:44px; height:44px; border-radius:50%; background:var(--neutral-tint); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .trust-card .ic svg{width:22px; height:22px; stroke:var(--red); fill:none; stroke-width:1.8;}
-  .trust-card strong{display:block; font-size:0.92rem; font-weight:700;}
-  .trust-card span{font-size:0.78rem; color:var(--ink-soft);}
+  .trust-card strong{display:block; font-size:1.02rem; font-weight:700;}
+  .trust-card span{font-size:0.97rem; color:var(--ink-soft);}
 
   .section{padding:72px 0;}
   .section.tight{padding:56px 0;}
@@ -125,7 +130,7 @@
   .about-stats{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px;}
   .about-stat{background:#fff; border-radius:var(--r-md); padding:16px 22px; box-shadow:var(--shadow-sm); flex:1; min-width:130px; overflow:hidden;}
   .about-stat strong{display:block; font-size:1.4rem; font-weight:800; color:var(--red); overflow-wrap:anywhere; word-break:break-word;}
-  .about-stat span{font-size:0.78rem; color:var(--ink-soft);}
+  .about-stat span{font-size:0.97rem; color:var(--ink-soft);}
 
   /* Servicios */
   .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
@@ -134,7 +139,7 @@
   .service-icon{width:52px; height:52px; border-radius:50%; background:var(--neutral-tint); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
   .service-icon svg{width:24px; height:24px; stroke:var(--red); fill:none; stroke-width:1.6;}
   .service-card h3{font-size:1.05rem; margin-bottom:8px; font-weight:700;}
-  .service-card p{font-size:0.88rem; color:var(--ink-soft);}
+  .service-card p{font-size:0.97rem; color:var(--ink-soft);}
 
   /* Antes y despues */
   .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;}
@@ -143,9 +148,9 @@
   .ba-images{display:grid; grid-template-columns:1fr 1fr;}
   .ba-img{aspect-ratio:1/1; position:relative;}
   .ba-img svg{width:100%; height:100%;}
-  .ba-label{position:absolute; top:12px; left:12px; font-size:0.68rem; font-weight:700; background:#fff; color:var(--ink); padding:5px 12px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
+  .ba-label{position:absolute; top:12px; left:12px; font-size:1rem; font-weight:700; background:#fff; color:var(--ink); padding:5px 12px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
   .ba-img.after .ba-label{background:var(--red); color:#fff;}
-  .ba-caption{padding:16px 20px; font-size:0.86rem; color:var(--ink-soft); font-weight:600;}
+  .ba-caption{padding:16px 20px; font-size:0.95rem; color:var(--ink-soft); font-weight:600;}
 
   /* Trabajos */
   .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
@@ -156,12 +161,12 @@
   /* Proceso */
   .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
   .process-step{background:#fff; border-radius:var(--r-md); padding:28px 24px; box-shadow:var(--shadow-sm); position:relative;}
-  .process-step .num{position:absolute; top:-14px; left:24px; width:32px; height:32px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.85rem; box-shadow:var(--shadow-red);}
+  .process-step .num{position:absolute; top:-14px; left:24px; width:32px; height:32px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.95rem; box-shadow:var(--shadow-red);}
   .process-step h3{font-size:1rem; margin-top:14px; margin-bottom:8px; font-weight:700;}
-  .process-step p{font-size:0.86rem; color:var(--ink-soft);}
+  .process-step p{font-size:0.95rem; color:var(--ink-soft);}
 
   .tags-wrap{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
-  .tag{padding:11px 20px; background:#fff; border-radius:var(--r-pill); font-size:0.86rem; font-weight:600; color:var(--ink-soft); box-shadow:var(--shadow-sm); transition:color 0.2s, box-shadow 0.2s;}
+  .tag{padding:11px 20px; background:#fff; border-radius:var(--r-pill); font-size:0.95rem; font-weight:600; color:var(--ink-soft); box-shadow:var(--shadow-sm); transition:color 0.2s, box-shadow 0.2s;}
   .tag:hover{color:var(--red); box-shadow:var(--shadow-md);}
 
   /* FAQ */
@@ -171,20 +176,20 @@
   .faq-q .plus{font-size:1.4rem; font-weight:400; transition:transform 0.3s; color:var(--red); flex-shrink:0;}
   .faq-item.open .plus{transform:rotate(45deg);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height 0.3s ease;}
-  .faq-a-inner{padding:0 26px 22px; font-size:0.92rem; color:var(--ink-soft);}
+  .faq-a-inner{padding:0 26px 22px; font-size:1.02rem; color:var(--ink-soft);}
 
   /* Redes */
   .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
-  .social-link{display:flex; align-items:center; gap:10px; padding:15px 26px; background:#fff; border-radius:var(--r-pill); font-weight:700; font-size:0.88rem; box-shadow:var(--shadow-sm); transition:transform 0.2s, box-shadow 0.2s;}
+  .social-link{display:flex; align-items:center; gap:10px; padding:15px 26px; background:#fff; border-radius:var(--r-pill); font-weight:700; font-size:0.97rem; box-shadow:var(--shadow-sm); transition:transform 0.2s, box-shadow 0.2s;}
   .social-link:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
-  .social-link svg{width:18px; height:18px; fill:var(--red);}
+  .social-link svg{width:18px; height:18px;}
 
   /* Contacto */
   .contact-card-big{background:linear-gradient(135deg, var(--ink), #362A2A); border-radius:var(--r-lg); padding:64px 56px; color:#fff; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; margin-bottom:80px;}
   .contact-card-big h2{color:#fff; font-size:clamp(1.9rem, 3.2vw, 2.5rem); margin-bottom:16px;}
   .contact-card-big p{color:rgba(255,255,255,0.65); margin-bottom:28px; max-width:44ch;}
   .contact-info{background:rgba(255,255,255,0.08); border-radius:var(--r-md); padding:28px;}
-  .contact-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:0.9rem;}
+  .contact-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:1rem;}
   .contact-row:last-child{border-bottom:none;}
   .contact-row span:first-child{color:rgba(255,255,255,0.5);}
   .contact-row span:last-child{font-weight:700; text-align:right;}
@@ -193,16 +198,16 @@
   .footer-grid{display:grid; grid-template-columns:1.4fr 0.8fr 1fr; gap:56px; padding:56px 0 48px;}
   .footer-brand .logo{margin-bottom:18px;}
   .footer-brand .logo-text span{color:var(--red);}
-  .footer-brand p{font-size:0.9rem; line-height:1.7; max-width:36ch; margin-bottom:22px; color:rgba(255,255,255,0.55);}
+  .footer-brand p{font-size:1rem; line-height:1.7; max-width:36ch; margin-bottom:22px; color:rgba(255,255,255,0.55);}
   .footer-social{display:flex; gap:12px;}
   .footer-social a{width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 0.2s, transform 0.2s;}
-  .footer-social a:hover{background:var(--red); transform:translateY(-3px);}
+  .footer-social a:hover{transform:translateY(-3px); filter:brightness(1.12); box-shadow:0 8px 18px rgba(0,0,0,0.3);}
   .footer-social svg{width:16px; height:16px; fill:#fff;}
-  .footer-col h4{color:#fff; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;}
-  .footer-col{display:flex; flex-direction:column; gap:13px; font-size:0.9rem;}
+  .footer-col h4{color:#fff; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;}
+  .footer-col{display:flex; flex-direction:column; gap:13px; font-size:1rem;}
   .footer-col a{transition:color 0.2s;}
   .footer-col a:hover{color:var(--red);}
-  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.82rem;}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:1.02rem;}
   .credit{display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:var(--r-pill); background:rgba(255,255,255,0.08); transition:background 0.2s, transform 0.2s;}
   .credit:hover{background:var(--red); transform:translateY(-2px);}
   .credit span{font-weight:700; color:#fff;}
@@ -222,7 +227,7 @@
   .wa-float:hover{transform:scale(1.08);}
   .wa-bubble{
     display:flex; align-items:center; gap:8px; background:#fff; color:var(--ink);
-    padding:12px 18px; border-radius:var(--r-pill); font-size:0.85rem; font-weight:600;
+    padding:12px 18px; border-radius:var(--r-pill); font-size:0.95rem; font-weight:600;
     box-shadow:var(--shadow-md); white-space:nowrap; animation:wa-bubble-in 0.5s ease 1.2s both;
   }
   .wa-bubble-dot{width:8px; height:8px; border-radius:50%; background:#25D366; flex-shrink:0; animation:wa-dot-blink 1.6s ease-in-out infinite;}
@@ -273,6 +278,8 @@
     .wrap{padding:0 20px;}
     .nav{padding:16px 20px;}
     header.scrolled .nav{padding:12px 20px;}
+    .logo-mark{width:46px; height:46px; font-size:1.2rem;}
+    .logo-text{font-size:1.2rem;}
     .section{padding:48px 0;}
     .section.tight{padding:40px 0;}
     .divider{padding:0 20px;}
@@ -352,7 +359,7 @@
       <div class="hero-grid">
         <div>
           <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Turnos esta semana</div>
-          <h1>Fumigación profesional, <span>rápida y sin vueltas.</span></h1>
+          <h1>Fumigación profesional, <span>rápida y eficaz.</span></h1>
           <p class="lede">Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Coordinás por WhatsApp y listo.</p>
           <div class="hero-actions">
             <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Coordinar por WhatsApp</a>
@@ -569,15 +576,18 @@
     </div>
     <div class="social-row reveal">
       <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
         Facebook
       </a>
       <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" style="fill:none" stroke="#DA2A2A" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#DA2A2A" stroke="none"/></svg>
+        <svg viewBox="0 0 24 24" style="fill:none" stroke="url(#igGrad1)" stroke-width="1.8">
+          <defs><linearGradient id="igGrad1" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset="0.35" stop-color="#D62976"/><stop offset="0.65" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs>
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="url(#igGrad1)" stroke="none"/>
+        </svg>
         Instagram
       </a>
       <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
         WhatsApp
       </a>
     </div>
@@ -593,8 +603,8 @@
         <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Escribir por WhatsApp</a>
       </div>
       <div class="contact-info">
-        <div class="contact-row"><span>WhatsApp</span><span>11 3876-2463</span></div>
-        <div class="contact-row"><span>Email</span><span>consultas@adrianfumigaciones.com</span></div>
+        <div class="contact-row"><span style="color:#25D366; font-weight:800;">WhatsApp</span><span>11 3876-2463</span></div>
+        <div class="contact-row"><span>Email</span><span>Próximamente</span></div>
         <div class="contact-row"><span>Horario</span><span>Lun a Sáb, 9 a 18 hs</span></div>
         <div class="contact-row"><span>Zona</span><span>CABA / GBA</span></div>
         <div class="contact-row"><span>Web</span><span>adrianfumigaciones.site</span></div>
@@ -618,14 +628,14 @@
       </div>
       <p>Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs.</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" aria-label="Facebook" style="background:#1877F2;">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
         </a>
-        <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" aria-label="Instagram" style="background:linear-gradient(135deg,#FEDA75,#D62976,#962FBF,#4F5BD5);">
           <svg viewBox="0 0 24 24" style="fill:none" stroke="#ffffff" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#ffffff" stroke="none"/></svg>
         </a>
-        <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" aria-label="WhatsApp" style="background:#25D366;">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
         </a>
       </div>
     </div>
@@ -641,8 +651,8 @@
 
     <div class="footer-col">
       <h4>Contacto</h4>
-      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener">WhatsApp: 11 3876-2463</a>
-      <a href="mailto:consultas@adrianfumigaciones.com">consultas@adrianfumigaciones.com</a>
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener" style="color:#25D366; font-weight:700;">WhatsApp: 11 3876-2463</a>
+      <!-- TODO: agregar nuevo email cuando esté creado, ej: <a href="mailto:nuevo@correo.com">nuevo@correo.com</a> -->
       <span>Lunes a sábados, 9 a 18 hs</span>
       <span>CABA y Gran Buenos Aires</span>
       <span>adrianfumigaciones.site</span>
