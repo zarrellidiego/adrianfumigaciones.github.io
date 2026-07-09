@@ -7,345 +7,247 @@
 <meta name="description" content="Fumigación y control de plagas en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs. Respuesta rápida por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --red:#DA2A2A;
-    --red-dark:#B81F1F;
+    --red:#E01E1E;
+    --red-dark:#B81616;
     --wa-green:#25D366;
     --wa-green-dark:#1DA851;
-    --red-tint:#FFEEEE;
-    --neutral-tint:#F1EEEC;
-    --ink:#221D1D;
-    --ink-soft:#4A4444;
-    --bg:#FFFFFF;
-    --bg-tint:#FBE9E7;
-    --line:rgba(34,29,29,0.08);
-    --shadow-sm:0 4px 14px rgba(34,29,29,0.06);
-    --shadow-md:0 14px 34px rgba(34,29,29,0.1);
-    --shadow-red:0 10px 20px rgba(218,42,42,0.16);
-    --shadow-green:0 10px 22px rgba(37,211,102,0.35);
-    --r-lg:26px;
-    --r-md:18px;
-    --r-sm:12px;
-    --r-pill:999px;
+    --fb-blue:#1877F2;
+    --ink:#0D0B0B;
+    --paper:#F7F4F0;
+    --line:rgba(13,11,11,0.14);
+    --ink-soft:#3E3838;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  html{background:var(--bg);}
-  body{color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative;}
-
-  /* Sitewide animated gradient mesh — fixed behind everything, reliable z-index layering */
-  .bg-mesh{position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; background:var(--bg);}
-  .bg-mesh::after{content:""; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(34,29,29,0.09) 1.5px, transparent 1.5px); background-size:24px 24px;}
-  .bg-mesh .blob{position:absolute; border-radius:50%; filter:blur(55px); opacity:0.85; mix-blend-mode:multiply;}
-  .bg-mesh .b1{width:640px; height:640px; background:radial-gradient(circle, #F4867E, transparent 72%); top:-200px; left:-160px; animation:mesh-drift-1 22s ease-in-out infinite;}
-  .bg-mesh .b2{width:560px; height:560px; background:radial-gradient(circle, #F7C948, transparent 72%); top:10%; right:-180px; animation:mesh-drift-2 27s ease-in-out infinite;}
-  .bg-mesh .b3{width:600px; height:600px; background:radial-gradient(circle, #E0629C, transparent 72%); bottom:-180px; left:10%; animation:mesh-drift-3 25s ease-in-out infinite;}
-  .bg-mesh .b4{width:500px; height:500px; background:radial-gradient(circle, var(--red), transparent 72%); bottom:5%; right:5%; opacity:0.5; animation:mesh-drift-1 20s ease-in-out infinite reverse;}
-  @keyframes mesh-drift-1{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(70px,60px) scale(1.18);}}
-  @keyframes mesh-drift-2{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-60px,70px) scale(1.14);}}
-  @keyframes mesh-drift-3{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(50px,-50px) scale(1.16);}}
-  @media (prefers-reduced-motion: reduce){ .bg-mesh .blob{animation:none !important;} }
-  h1,h2,h3{font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; line-height:1.12; letter-spacing:-0.02em; color:var(--ink);}
+  html{scroll-behavior:smooth; background:var(--ink);}
+  body{background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; font-size:17px; line-height:1.6; font-weight:500; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  h1,h2,h3{font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; line-height:0.95; letter-spacing:0.01em;}
   a{color:inherit; text-decoration:none;}
-  p{font-weight:500;}
   ul{list-style:none;}
   img{max-width:100%; display:block;}
   svg{display:block;}
+  ::selection{background:var(--red); color:#fff;}
 
-  .wrap{max-width:1180px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
 
-  header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1180px; margin:0 auto;}
-  .logo{display:flex; align-items:center; gap:10px;}
-  .logo-mark{width:58px; height:58px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.5rem; box-shadow:var(--shadow-red); overflow:hidden; border:2px solid #fff; outline:1px solid var(--line);}
+  /* Header */
+  header{position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:3px solid var(--red);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1240px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:14px;}
+  .logo-mark{width:60px; height:60px; border-radius:50%; border:3px solid var(--red); overflow:hidden; flex-shrink:0; background:#fff;}
   .logo-mark img{width:100%; height:100%; object-fit:cover;}
-  .logo-text{font-weight:800; font-size:1.55rem;}
+  .logo-text{font-family:'Anton', sans-serif; font-size:1.5rem; color:#fff; text-transform:uppercase; letter-spacing:0.01em;}
   .logo-text span{color:var(--red);}
-  .nav-links{display:flex; gap:30px; font-size:1rem; font-weight:600;}
-  .nav-links a{color:var(--ink-soft); transition:color 0.2s;}
-  .nav-links a:hover{color:var(--red);}
+  .nav-links{display:flex; gap:30px; font-size:1rem; font-weight:700;}
+  .nav-links a{color:rgba(255,255,255,0.75); transition:color 0.2s;}
+  .nav-links a:hover{color:#fff;}
   .nav-cta{display:flex; align-items:center; gap:12px;}
-  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--r-pill); font-weight:700; font-size:0.97rem; border:2px solid transparent; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;}
-  .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--wa-green); color:#fff; box-shadow:var(--shadow-green);}
-  .btn-primary:hover{background:var(--wa-green-dark); box-shadow:0 16px 32px rgba(37,211,102,0.4);}
-  .btn-outline{border-color:var(--ink); color:var(--ink); background:#fff; border-width:2.5px; font-weight:800;}
-  .btn-outline:hover{border-color:var(--red); color:var(--red);}
-  .btn-sm{padding:11px 20px; font-size:1.02rem;}
-  .btn-lg{padding:18px 34px; font-size:1rem;}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:15px 28px; font-weight:800; font-size:1rem; border:3px solid transparent; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.2s ease; text-transform:uppercase; letter-spacing:0.02em;}
+  .btn:hover{transform:translate(-2px,-2px);}
+  .btn-primary{background:var(--wa-green); color:#fff; box-shadow:5px 5px 0 var(--wa-green-dark);}
+  .btn-primary:hover{box-shadow:7px 7px 0 var(--wa-green-dark);}
+  .btn-outline{border-color:#fff; color:#fff; background:transparent;}
+  .btn-outline:hover{background:#fff; color:var(--ink);}
+  .btn-sm{padding:11px 20px; font-size:0.85rem;}
+  .btn-light{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-light:hover{background:var(--ink); color:#fff;}
 
   .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
-  .menu-toggle span{display:block; width:22px; height:2px; border-radius:2px; background:var(--ink); margin:5px 0;}
+  .menu-toggle span{display:block; width:26px; height:3px; background:#fff; margin:5px 0;}
 
-  /* Hero */
-  .hero{padding:64px 0 0; overflow:hidden; position:relative;}
-  .hero-card{
-    background:linear-gradient(135deg, var(--red-tint) 0%, #FDF3F2 45%, #fff 85%);
-    border:1px solid var(--line);
-    border-radius:var(--r-lg); padding:64px 56px; position:relative; overflow:hidden;
-  }
-  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; position:relative; z-index:1;}
-  .pill-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; padding:9px 18px; border-radius:var(--r-pill); font-size:1rem; font-weight:700; color:var(--red); box-shadow:var(--shadow-sm); margin-bottom:22px;}
-  .pill-badge svg{width:14px; height:14px; fill:var(--red);}
-  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom:20px;}
-  .hero h1 span{color:var(--red);}
-  .hero .lede{font-size:1.15rem; color:var(--ink-soft); max-width:42ch; margin-bottom:32px; font-weight:600;}
-  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
-  .hero-mini-badges{display:flex; gap:12px; flex-wrap:wrap;}
-  .mini-badge{display:flex; align-items:center; gap:8px; background:#fff; padding:10px 16px; border-radius:var(--r-pill); font-size:1rem; font-weight:600; box-shadow:var(--shadow-sm);}
-  .mini-badge svg{width:16px; height:16px; stroke:var(--red); fill:none; stroke-width:2;}
+  /* HERO — full bleed dark photo */
+  .hero{position:relative; min-height:88vh; display:flex; align-items:flex-end; background:var(--ink); overflow:hidden;}
+  .hero-photo{position:absolute; inset:0;}
+  .hero-photo img{width:100%; height:100%; object-fit:cover; opacity:0.5;}
+  .hero-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, var(--ink) 10%, rgba(13,11,11,0.55) 55%, rgba(13,11,11,0.75) 100%);}
+  .hero-inner{position:relative; z-index:1; padding:0 0 72px;}
+  .hero-tag{display:inline-flex; align-items:center; gap:10px; background:var(--red); color:#fff; padding:9px 20px; font-weight:800; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:28px;}
+  .hero h1{color:#fff; font-size:clamp(3rem, 8vw, 6.4rem); margin-bottom:26px; max-width:16ch;}
+  .hero h1 .accent{color:var(--red);}
+  .hero .lede{color:rgba(255,255,255,0.88); font-size:1.25rem; font-weight:600; max-width:44ch; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
 
-  .hero-visual{
-    aspect-ratio:1/1; border-radius:var(--r-lg); overflow:hidden; position:relative;
-    background:linear-gradient(160deg, #2B2222, #1A1414); box-shadow:var(--shadow-md);
-  }
-  .hero-visual svg{width:100%; height:100%;}
-  .hero-visual .float-tag{
-    position:absolute; bottom:20px; left:20px; right:20px; background:#fff; border-radius:var(--r-md);
-    padding:16px 20px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:12px;
-  }
-  .float-tag .dot{width:10px; height:10px; border-radius:50%; background:var(--red); flex-shrink:0;}
-  .float-tag span{font-size:1.02rem; font-weight:600; color:var(--ink-soft);}
+  /* Stat bar — bold black block */
+  .stat-bar{background:var(--ink); border-top:3px solid var(--red);}
+  .stat-grid{display:grid; grid-template-columns:repeat(4, 1fr);}
+  .stat-item{padding:36px 28px; border-right:1px solid rgba(255,255,255,0.14); text-align:center;}
+  .stat-item:last-child{border-right:none;}
+  .stat-item strong{display:block; font-family:'Anton', sans-serif; font-size:clamp(2rem, 4vw, 2.8rem); color:#fff; line-height:1;}
+  .stat-item span{display:block; margin-top:8px; font-size:0.92rem; font-weight:700; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:0.03em;}
 
-  /* Trust badges row */
-  .trust-row{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:-30px; position:relative; z-index:2;}
-  .trust-card{
-    background:#fff; border-radius:var(--r-md); padding:20px 26px; box-shadow:var(--shadow-md);
-    display:flex; align-items:center; gap:14px; flex:1; min-width:230px;
-  }
-  .trust-card .ic{width:44px; height:44px; border-radius:50%; background:var(--neutral-tint); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-  .trust-card .ic svg{width:22px; height:22px; stroke:var(--red); fill:none; stroke-width:1.8;}
-  .trust-card strong{display:block; font-size:1.02rem; font-weight:700;}
-  .trust-card span{font-size:0.97rem; color:var(--ink-soft);}
+  .section{padding:100px 0;}
+  .section.tight{padding:72px 0;}
+  .section-head{max-width:680px; margin-bottom:60px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .kicker{display:inline-flex; align-items:center; gap:10px; font-weight:800; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:18px;}
+  .kicker::before{content:""; width:30px; height:4px; background:var(--red);}
+  .section-head h2{font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:16px;}
+  .section-head p{color:var(--ink-soft); font-size:1.1rem; font-weight:600;}
 
-  .section{padding:72px 0;}
-  .section.tight{padding:56px 0;}
-  .section.tint{background:var(--bg-tint);}
-  .section-head{max-width:600px; margin:0 auto 52px; text-align:center;}
-  .section-head .pill-badge{margin-left:auto; margin-right:auto;}
-  .section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.5rem); margin-bottom:14px;}
-  .section-head p{color:var(--ink-soft); font-size:1.02rem;}
-
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity 0.7s ease, transform 0.7s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
-  .reveal-stagger > *{opacity:0; transform:translateY(18px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  .reveal-stagger > *{opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease;}
   .reveal-stagger.in > *{opacity:1; transform:translateY(0);}
-  .reveal-stagger.in > *:nth-child(1){transition-delay:.03s;} .reveal-stagger.in > *:nth-child(2){transition-delay:.08s;}
-  .reveal-stagger.in > *:nth-child(3){transition-delay:.13s;} .reveal-stagger.in > *:nth-child(4){transition-delay:.18s;}
-  .reveal-stagger.in > *:nth-child(5){transition-delay:.23s;} .reveal-stagger.in > *:nth-child(6){transition-delay:.28s;}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.04s;} .reveal-stagger.in > *:nth-child(2){transition-delay:.1s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.16s;} .reveal-stagger.in > *:nth-child(4){transition-delay:.22s;}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.28s;} .reveal-stagger.in > *:nth-child(6){transition-delay:.34s;}
 
-  /* Nosotros */
-  .about-card{background:var(--bg-tint); border-radius:var(--r-lg); padding:56px; display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;}
-  .about-frame{aspect-ratio:1/1; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-md);}
-  .about-frame svg{width:100%; height:100%;}
-  .about-text p{color:var(--ink-soft); margin-bottom:16px; font-size:1.02rem;}
-  .about-stats{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px;}
-  .about-stat{background:#fff; border-radius:var(--r-md); padding:16px 22px; box-shadow:var(--shadow-sm); flex:1; min-width:130px; overflow:hidden;}
-  .about-stat strong{display:block; font-size:1.4rem; font-weight:800; color:var(--red); overflow-wrap:anywhere; word-break:break-word;}
-  .about-stat span{font-size:0.97rem; color:var(--ink-soft);}
+  /* Nosotros — split, real photo, sharp edges */
+  .about{background:var(--ink); color:#fff;}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:stretch;}
+  .about-photo{aspect-ratio:4/5; overflow:hidden; position:relative;}
+  .about-photo img{width:100%; height:100%; object-fit:cover;}
+  .about-copy{padding:64px 0 64px 64px; display:flex; flex-direction:column; justify-content:center;}
+  .about-copy .kicker{color:var(--red);}
+  .about-copy h2{color:#fff; font-size:clamp(2.2rem, 4.4vw, 3.2rem); margin-bottom:24px;}
+  .about-copy p{color:rgba(255,255,255,0.78); font-size:1.08rem; font-weight:600; margin-bottom:18px; max-width:48ch;}
+  .about-stats{display:flex; gap:0; margin-top:32px; border-top:2px solid rgba(255,255,255,0.2);}
+  .about-stat{padding:22px 24px 0 0; flex:1;}
+  .about-stat strong{display:block; font-family:'Anton', sans-serif; font-size:2rem; color:var(--red);}
+  .about-stat span{font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.6); text-transform:uppercase;}
 
-  /* Servicios */
-  .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
-  .service-card{background:#fff; border-radius:var(--r-md); padding:32px 26px; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s ease, transform 0.25s ease; border:1px solid var(--line);}
-  .service-card:hover{box-shadow:var(--shadow-md); transform:translateY(-6px);}
-  .service-icon{width:52px; height:52px; border-radius:50%; background:var(--neutral-tint); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
-  .service-icon svg{width:24px; height:24px; stroke:var(--red); fill:none; stroke-width:1.6;}
-  .service-card h3{font-size:1.05rem; margin-bottom:8px; font-weight:700;}
-  .service-card p{font-size:0.97rem; color:var(--ink-soft);}
+  /* Servicios — editorial numbered list, sharp */
+  .services-list{border-top:3px solid var(--ink);}
+  .service-row{display:grid; grid-template-columns:120px 1fr; gap:32px; padding:36px 0; border-bottom:1px solid var(--line); align-items:center; transition:background 0.25s ease;}
+  .service-row:hover{background:rgba(224,30,30,0.05);}
+  .service-num{font-family:'Anton', sans-serif; font-size:3.2rem; color:var(--red); line-height:1;}
+  .service-body h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.3rem; text-transform:none; margin-bottom:8px;}
+  .service-body p{color:var(--ink-soft); font-size:1rem; font-weight:600; max-width:60ch;}
 
-  /* Antes y despues */
-  .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;}
-  .ba-card{background:#fff; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s ease, transform 0.25s ease;}
-  .ba-card:hover{box-shadow:var(--shadow-md); transform:translateY(-4px);}
-  .ba-images{display:grid; grid-template-columns:1fr 1fr;}
-  .ba-img{aspect-ratio:1/1; position:relative;}
-  .ba-img svg{width:100%; height:100%;}
-  .ba-label{position:absolute; top:12px; left:12px; font-size:1rem; font-weight:700; background:#fff; color:var(--ink); padding:5px 12px; border-radius:var(--r-pill); box-shadow:var(--shadow-sm);}
-  .ba-img.after .ba-label{background:var(--red); color:#fff;}
-  .ba-caption{padding:16px 20px; font-size:0.95rem; color:var(--ink-soft); font-weight:600;}
+  /* Antes y despues — big sharp comparison */
+  .ba-section{background:var(--ink); color:#fff;}
+  .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:3px; background:rgba(255,255,255,0.15);}
+  .ba-card{background:var(--ink);}
+  .ba-images{display:grid; grid-template-columns:1fr 1fr; gap:2px;}
+  .ba-img{aspect-ratio:1/1; position:relative; overflow:hidden;}
+  .ba-img img{width:100%; height:100%; object-fit:cover;}
+  .ba-label{position:absolute; top:14px; left:14px; font-weight:800; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:#fff; padding:6px 14px; background:var(--ink);}
+  .ba-img.after .ba-label{background:var(--red);}
+  .ba-caption{padding:20px 4px; font-weight:800; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;}
 
-  /* Trabajos */
-  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
-  .gallery-item{aspect-ratio:1/1; border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform 0.3s ease, box-shadow 0.3s ease;}
-  .gallery-item:hover{transform:translateY(-4px) scale(1.02); box-shadow:var(--shadow-md);}
-  .gallery-item svg{width:100%; height:100%;}
+  /* Trabajos — full-bleed sharp grid */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:3px;}
+  .gallery-item{aspect-ratio:1/1; overflow:hidden; position:relative;}
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
+  .gallery-item:hover img{transform:scale(1.06);}
 
   /* Proceso */
-  .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
-  .process-step{background:#fff; border-radius:var(--r-md); padding:28px 24px; box-shadow:var(--shadow-sm); position:relative;}
-  .process-step .num{position:absolute; top:-14px; left:24px; width:32px; height:32px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.95rem; box-shadow:var(--shadow-red);}
-  .process-step h3{font-size:1rem; margin-top:14px; margin-bottom:8px; font-weight:700;}
-  .process-step p{font-size:0.95rem; color:var(--ink-soft);}
+  .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:0; border-top:3px solid var(--ink);}
+  .process-step{padding:32px 28px 0; border-right:1px solid var(--line);}
+  .process-step:last-child{border-right:none;}
+  .process-step .num{font-family:'Anton', sans-serif; font-size:2.6rem; color:var(--red); display:block; margin-bottom:12px;}
+  .process-step h3{font-family:'Plus Jakarta Sans',sans-serif; text-transform:none; font-weight:800; font-size:1.08rem; margin-bottom:10px;}
+  .process-step p{font-size:0.98rem; font-weight:600; color:var(--ink-soft);}
 
-  .tags-wrap{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
-  .tag{padding:11px 20px; background:#fff; border-radius:var(--r-pill); font-size:0.95rem; font-weight:600; color:var(--ink-soft); box-shadow:var(--shadow-sm); transition:color 0.2s, box-shadow 0.2s;}
-  .tag:hover{color:var(--red); box-shadow:var(--shadow-md);}
+  .tags-wrap{display:flex; flex-wrap:wrap; gap:12px;}
+  .tag{padding:12px 22px; border:2px solid var(--ink); font-weight:800; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.01em; transition:background 0.2s, color 0.2s;}
+  .tag:hover{background:var(--ink); color:#fff;}
 
   /* FAQ */
-  .faq{max-width:780px; margin:0 auto;}
-  .faq-item{background:#fff; border-radius:var(--r-md); box-shadow:var(--shadow-sm); margin-bottom:14px; overflow:hidden;}
-  .faq-q{width:100%; text-align:left; background:none; border:none; padding:22px 26px; display:flex; justify-content:space-between; align-items:center; gap:20px; font-weight:700; font-size:1rem; cursor:pointer;}
-  .faq-q .plus{font-size:1.4rem; font-weight:400; transition:transform 0.3s; color:var(--red); flex-shrink:0;}
+  .faq{max-width:840px;}
+  .faq-item{border-bottom:3px solid var(--ink);}
+  .faq-item:first-child{border-top:3px solid var(--ink);}
+  .faq-q{width:100%; text-align:left; background:none; border:none; padding:26px 4px; display:flex; justify-content:space-between; align-items:center; gap:24px; font-weight:800; font-size:1.2rem; cursor:pointer;}
+  .faq-q .plus{font-size:1.8rem; font-weight:400; transition:transform 0.3s; color:var(--red); flex-shrink:0;}
   .faq-item.open .plus{transform:rotate(45deg);}
-  .faq-a{max-height:0; overflow:hidden; transition:max-height 0.3s ease;}
-  .faq-a-inner{padding:0 26px 22px; font-size:1.02rem; color:var(--ink-soft);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height 0.35s ease;}
+  .faq-a-inner{padding:0 4px 26px; font-size:1.02rem; font-weight:600; color:var(--ink-soft); max-width:62ch;}
 
   /* Redes */
-  .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
-  .social-link{display:flex; align-items:center; gap:10px; padding:15px 26px; background:#fff; border-radius:var(--r-pill); font-weight:700; font-size:0.97rem; box-shadow:var(--shadow-sm); transition:transform 0.2s, box-shadow 0.2s;}
-  .social-link:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
-  .social-link svg{width:18px; height:18px;}
+  .social-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .social-link{display:flex; align-items:center; gap:12px; padding:18px 28px; color:#fff; font-weight:800; font-size:1.05rem; text-transform:uppercase; transition:transform 0.2s;}
+  .social-link:hover{transform:translate(-3px,-3px);}
+  .social-link svg{width:22px; height:22px; fill:#fff;}
+  .social-fb{background:var(--fb-blue); box-shadow:5px 5px 0 #0d5bc9;}
+  .social-ig{background:linear-gradient(135deg,#FEDA75,#D62976,#962FBF,#4F5BD5); box-shadow:5px 5px 0 #7b1a63;}
+  .social-wa{background:var(--wa-green); box-shadow:5px 5px 0 var(--wa-green-dark);}
 
   /* Contacto */
-  .contact-card-big{background:linear-gradient(135deg, var(--ink), #362A2A); border-radius:var(--r-lg); padding:64px 56px; color:#fff; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; margin-bottom:80px;}
-  .contact-card-big h2{color:#fff; font-size:clamp(1.9rem, 3.2vw, 2.5rem); margin-bottom:16px;}
-  .contact-card-big p{color:rgba(255,255,255,0.65); margin-bottom:28px; max-width:44ch;}
-  .contact-info{background:rgba(255,255,255,0.08); border-radius:var(--r-md); padding:28px;}
-  .contact-row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:1rem;}
+  .contact{background:var(--red); color:#fff;}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
+  .contact h2{color:#fff; font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:22px;}
+  .contact p{color:rgba(255,255,255,0.9); margin-bottom:32px; max-width:44ch; font-size:1.1rem; font-weight:600;}
+  .contact-card{background:var(--ink); padding:36px;}
+  .contact-row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.18); font-size:1rem; font-weight:700;}
   .contact-row:last-child{border-bottom:none;}
-  .contact-row span:first-child{color:rgba(255,255,255,0.5);}
-  .contact-row span:last-child{font-weight:700; text-align:right;}
+  .contact-row span:first-child{color:rgba(255,255,255,0.55); text-transform:uppercase; font-size:0.82rem; letter-spacing:0.03em;}
+  .contact-row span:last-child{color:#fff; text-align:right;}
 
-  .site-footer{background:var(--ink); color:rgba(255,255,255,0.6); padding:0 0 100px; margin-top:-1px;}
-  .footer-grid{display:grid; grid-template-columns:1.4fr 0.8fr 1fr; gap:56px; padding:56px 0 48px;}
-  .footer-brand .logo{margin-bottom:18px;}
-  .footer-brand .logo-text span{color:var(--red);}
-  .footer-brand p{font-size:1rem; line-height:1.7; max-width:36ch; margin-bottom:22px; color:rgba(255,255,255,0.55);}
+  footer{background:var(--ink); color:rgba(255,255,255,0.55); padding-bottom:100px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 0.8fr 1fr; gap:56px; padding:64px 0 48px;}
+  .footer-brand .logo-mark{margin-bottom:20px;}
+  .footer-brand p{font-size:0.98rem; font-weight:600; line-height:1.7; max-width:36ch; margin-bottom:24px; color:rgba(255,255,255,0.55);}
   .footer-social{display:flex; gap:12px;}
-  .footer-social a{width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 0.2s, transform 0.2s;}
-  .footer-social a:hover{transform:translateY(-3px); filter:brightness(1.12); box-shadow:0 8px 18px rgba(0,0,0,0.3);}
-  .footer-social svg{width:16px; height:16px; fill:#fff;}
-  .footer-col h4{color:#fff; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px;}
-  .footer-col{display:flex; flex-direction:column; gap:13px; font-size:1rem;}
+  .footer-social a{width:44px; height:44px; display:flex; align-items:center; justify-content:center; transition:transform 0.2s;}
+  .footer-social a:hover{transform:translateY(-3px);}
+  .footer-social svg{width:19px; height:19px; fill:#fff;}
+  .footer-col h4{color:#fff; font-size:0.92rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:22px;}
+  .footer-col{display:flex; flex-direction:column; gap:15px; font-size:1rem; font-weight:600;}
   .footer-col a{transition:color 0.2s;}
   .footer-col a:hover{color:var(--red);}
-  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:1.02rem;}
-  .credit{display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:var(--r-pill); background:rgba(255,255,255,0.08); transition:background 0.2s, transform 0.2s;}
-  .credit:hover{background:var(--red); transform:translateY(-2px);}
-  .credit span{font-weight:700; color:#fff;}
-
-  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr; gap:36px;} }
-
-  /* Ambient glow behind sections — subtle drifting motion throughout the page */
-  .section{position:relative;}
-  .ambient-glow{position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;}
-  .glow-dot{position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(218,42,42,0.22), transparent 70%); filter:blur(10px); animation:glow-drift 12s ease-in-out infinite;}
-  @keyframes glow-drift{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(60px,-45px) scale(1.15);}}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.14); font-size:0.9rem; font-weight:600;}
+  .credit{display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:var(--red); color:#fff; font-weight:800; transition:transform 0.2s;}
+  .credit:hover{transform:translate(-2px,-2px);}
 
   .wa-wrap{position:fixed; bottom:calc(26px + env(safe-area-inset-bottom)); right:calc(26px + env(safe-area-inset-right)); z-index:60; display:flex; align-items:center; gap:12px;}
-  .wa-float{position:relative; background:#25D366; color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.22); transition:transform 0.2s; flex-shrink:0;}
-  .wa-float::before{content:""; position:absolute; inset:0; border-radius:50%; background:#25D366; animation:wa-pulse 2.6s ease-out infinite; z-index:-1;}
-  @keyframes wa-pulse{0%{transform:scale(1); opacity:0.55;} 100%{transform:scale(1.6); opacity:0;}}
+  .wa-float{position:relative; background:var(--wa-green); color:#fff; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.35); transition:transform 0.2s; flex-shrink:0;}
+  .wa-float::before{content:""; position:absolute; inset:0; border-radius:50%; background:var(--wa-green); animation:wa-pulse 2.6s ease-out infinite; z-index:-1;}
+  @keyframes wa-pulse{0%{transform:scale(1); opacity:0.55;} 100%{transform:scale(1.7); opacity:0;}}
   .wa-float:hover{transform:scale(1.08);}
-  .wa-bubble{
-    display:flex; align-items:center; gap:8px; background:#fff; color:var(--ink);
-    padding:12px 18px; border-radius:var(--r-pill); font-size:0.95rem; font-weight:600;
-    box-shadow:var(--shadow-md); white-space:nowrap; animation:wa-bubble-in 0.5s ease 1.2s both;
-  }
-  .wa-bubble-dot{width:8px; height:8px; border-radius:50%; background:#25D366; flex-shrink:0; animation:wa-dot-blink 1.6s ease-in-out infinite;}
+  .wa-bubble{display:flex; align-items:center; gap:8px; background:#fff; color:var(--ink); padding:13px 20px; font-size:0.92rem; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,0.2); white-space:nowrap; animation:wa-bubble-in 0.5s ease 1.2s both;}
+  .wa-bubble-dot{width:8px; height:8px; border-radius:50%; background:var(--wa-green); flex-shrink:0; animation:wa-dot-blink 1.6s ease-in-out infinite;}
   @keyframes wa-bubble-in{from{opacity:0; transform:translateX(10px);} to{opacity:1; transform:translateX(0);}}
   @keyframes wa-dot-blink{0%,100%{opacity:1;} 50%{opacity:0.3;}}
-
-  /* Section divider */
-  .divider{display:flex; align-items:center; gap:16px; padding:0 28px; max-width:1180px; margin:0 auto; position:relative; z-index:5;}
-  .divider-line{flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line) 25%, var(--line) 75%, transparent);}
-  .divider-mark{width:16px; height:16px; border-radius:50%; background:var(--red); position:relative; flex-shrink:0; box-shadow:0 0 0 5px rgba(218,42,42,0.14), 0 0 0 1px #fff;}
-  .divider-mark::before{content:""; position:absolute; inset:-8px; border-radius:50%; background:var(--red); opacity:0.25; animation:divider-pulse 2.2s ease-in-out infinite;}
-  .divider-mark::after{content:""; position:absolute; inset:-16px; border-radius:50%; border:1px solid var(--red); opacity:0.3; animation:divider-pulse 2.2s ease-in-out infinite 0.3s;}
-  @keyframes divider-pulse{0%{transform:scale(0.6); opacity:0.5;} 70%,100%{transform:scale(2.4); opacity:0;}}
-  .divider-band{padding:32px 0; position:relative; z-index:5;}
-
-  /* Wave divider between tinted sections */
-  .wave{display:block; width:100%; line-height:0; margin-top:-1px;}
-  .wave svg{width:100%; height:64px; display:block;}
-  .wave-shimmer{stroke-dasharray:14 10; animation:wave-shimmer 3.5s linear infinite;}
-  @keyframes wave-shimmer{to{stroke-dashoffset:-48;}}
-
-  /* Footer wave */
-  .footer-wave{display:block; width:100%; line-height:0; margin-top:-1px;}
-  .footer-wave svg{width:100%; height:56px; display:block;}
-
-  /* Spotlight hover — subtle, not overpowering */
-  .spotlight{position:relative; isolation:isolate;}
-  .spotlight::before{
-    content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
-    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(218,42,42,0.08), transparent 72%);
-    opacity:0; transition:opacity 0.3s ease;
-  }
-  .spotlight:hover::before{opacity:1;}
-  .spotlight{transition:transform 0.25s ease;}
 
   @media (max-width:960px){
     .nav-links, .nav-cta .btn-outline{display:none;}
     .menu-toggle{display:block;}
-    .hero-grid, .about-card, .contact-card-big{grid-template-columns:1fr;}
-    .hero-card{padding:44px 28px;}
-    .about-card{padding:36px 28px;}
-    .contact-card-big{padding:44px 28px;}
-    .trust-row{margin-top:24px;}
-    .process-grid, .services-grid{grid-template-columns:1fr 1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-copy{padding:48px 32px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .stat-item{border-bottom:1px solid rgba(255,255,255,0.14);}
+    .process-grid{grid-template-columns:1fr 1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:640px){
     .wrap{padding:0 20px;}
-    .nav{padding:16px 20px;}
-    header.scrolled .nav{padding:12px 20px;}
-    .logo-mark{width:46px; height:46px; font-size:1.2rem;}
+    .nav{padding:14px 20px;}
+    .logo-mark{width:48px; height:48px;}
     .logo-text{font-size:1.2rem;}
-    .section{padding:48px 0;}
-    .section.tight{padding:40px 0;}
-    .divider{padding:0 20px;}
-    .divider-band{padding:20px 0;}
-    .hero{padding:32px 0 0;}
-    .hero-card{padding:32px 20px; border-radius:20px;}
-    .hero h1{font-size:clamp(1.9rem, 8vw, 2.4rem); margin-bottom:14px;}
-    .hero .lede{font-size:1rem; margin-bottom:24px;}
-    .hero-actions{flex-direction:column; align-items:stretch; gap:10px;}
+    .hero{min-height:78vh;}
+    .hero-inner{padding-bottom:40px;}
+    .hero h1{font-size:clamp(2.2rem, 11vw, 3rem);}
+    .hero .lede{font-size:1.05rem;}
+    .hero-actions{flex-direction:column; align-items:stretch;}
     .hero-actions .btn{justify-content:center;}
-    .hero-mini-badges{flex-direction:column; align-items:stretch;}
-    .mini-badge{justify-content:center;}
-    .hero-visual{aspect-ratio:4/3;}
-    .trust-row{grid-template-columns:1fr; display:grid; gap:10px; margin-top:18px;}
-    .trust-card{min-width:0; padding:16px 18px;}
-    .about-card{padding:24px 18px; border-radius:20px; gap:28px;}
-    .about-stats{gap:10px; display:grid; grid-template-columns:1fr 1fr;}
-    .about-stat{min-width:0; padding:12px 12px;}
-    .about-stat strong{font-size:1.2rem;}
-    .section-head{margin-bottom:32px;}
-    .section-head h2{font-size:clamp(1.5rem, 6vw, 1.9rem);}
-    .services-grid{grid-template-columns:1fr; gap:14px;}
-    .service-card{padding:24px 20px;}
-    .ba-grid{gap:16px;}
-    .gallery-grid{grid-template-columns:1fr 1fr; gap:8px;}
-    .process-grid{grid-template-columns:1fr; gap:28px;}
-    .contact-card-big{padding:32px 20px; border-radius:20px; gap:32px;}
-    .footer-grid{padding:40px 0 32px; gap:28px;}
-    .site-footer{padding-bottom:calc(76px + env(safe-area-inset-bottom));}
-    .footer-bottom{flex-direction:column; align-items:flex-start; gap:16px;}
-    .wa-wrap{bottom:calc(16px + env(safe-area-inset-bottom)); right:calc(16px + env(safe-area-inset-right)); gap:8px;}
-    .wa-float{width:48px; height:48px;}
+    .section{padding:56px 0;}
+    .section.tight{padding:44px 0;}
+    .section-head{margin-bottom:36px;}
+    .about-copy{padding:40px 20px;}
+    .service-row{grid-template-columns:1fr; gap:10px;}
+    .service-num{font-size:2.2rem;}
+    .process-grid{grid-template-columns:1fr;}
+    .process-step{border-right:none; border-bottom:1px solid var(--line); padding-bottom:24px;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .contact-card{padding:24px;}
+    .footer-grid{grid-template-columns:1fr; padding:44px 0 32px; gap:28px;}
+    .footer-bottom{flex-direction:column; align-items:flex-start; gap:14px;}
+    .wa-wrap{bottom:calc(16px + env(safe-area-inset-bottom)); right:calc(16px + env(safe-area-inset-right));}
+    .wa-float{width:52px; height:52px;}
     .wa-bubble{display:none;}
-  }
-  @media (max-width:600px){
-    .process-grid, .services-grid{grid-template-columns:1fr;}
-    .contact-row{flex-direction:column; gap:4px;}
-    .contact-row span:last-child{text-align:left;}
+    footer{padding-bottom:calc(80px + env(safe-area-inset-bottom));}
   }
   @media (prefers-reduced-motion: reduce){
-    *{transition:none !important; scroll-behavior:auto !important;}
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
     .reveal, .reveal-stagger > *{opacity:1 !important; transform:none !important;}
-    .divider-mark::before, .divider-mark::after, .glow-dot, .wa-float::before, .wa-bubble-dot{animation:none !important;}
-    .wa-bubble{animation:none !important; opacity:1;}
-    .spotlight::before{display:none;}
   }
-  :focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+  :focus-visible{outline:3px solid var(--red); outline-offset:3px;}
 </style>
 </head>
 <body>
-
-<div class="bg-mesh"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
 
 <header id="siteHeader">
   <div class="nav">
@@ -369,180 +271,148 @@
 </header>
 
 <section class="hero">
-  <div class="ambient-glow"><div class="glow-dot" style="top:-140px; right:-60px;"></div></div>
-  <div class="wrap">
-    <div class="hero-card reveal in">
-      <div class="hero-grid">
-        <div>
-          <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Turnos esta semana</div>
-          <h1>Fumigación profesional, <span>rápida y eficaz.</span></h1>
-          <p class="lede">Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Coordinás por WhatsApp y listo.</p>
-          <div class="hero-actions">
-            <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Coordinar por WhatsApp</a>
-            <a href="#servicios" class="btn btn-outline btn-lg">Ver servicios</a>
-          </div>
-          <div class="hero-mini-badges">
-            <div class="mini-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Lun a Sáb, 9 a 18 hs</div>
-            <div class="mini-badge"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg>+10 años de experiencia</div>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <img src="fotos/WhatsApp Image 2026-07-08 at 12.46.50.jpeg" alt="Adrián Fumigaciones - trabajo en CABA y GBA" style="width:100%;height:100%;object-fit:cover;">
-          <div class="float-tag"><span class="dot"></span><span>Adrián Fumigaciones</span></div>
-        </div>
-      </div>
+  <div class="hero-photo"><img src="fotos/WhatsApp Image 2026-07-08 at 12.46.50.jpeg" alt="Adrián Fumigaciones trabajando"></div>
+  <div class="wrap hero-inner reveal in">
+    <div class="hero-tag">CABA y Gran Buenos Aires</div>
+    <h1>Fumigación profesional, <span class="accent">rápida y eficaz.</span></h1>
+    <p class="lede">Control de plagas para hogares, comercios e instituciones. Más de 10 años de experiencia. Coordinás por WhatsApp y listo.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary" target="_blank" rel="noopener">Coordinar por WhatsApp</a>
+      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
     </div>
+  </div>
+</section>
 
-    <div class="trust-row reveal-stagger reveal in">
-      <div class="trust-card spotlight">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></div>
-        <div><strong>+500</strong><span>Clientes atendidos</span></div>
-      </div>
-      <div class="trust-card spotlight">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg></div>
-        <div><strong>Productos certificados</strong><span>Seguros para familia y mascotas</span></div>
-      </div>
-      <div class="trust-card spotlight">
-        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-        <div><strong>Respuesta rápida</strong><span>Coordinás por WhatsApp</span></div>
-      </div>
-      <div class="trust-card spotlight">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div>
-        <div><strong>Todos los medios de pago</strong><span>Efectivo, transferencia, Mercado Pago</span></div>
+<div class="stat-bar">
+  <div class="wrap">
+    <div class="stat-grid reveal-stagger reveal in">
+      <div class="stat-item"><strong>+10</strong><span>Años de experiencia</span></div>
+      <div class="stat-item"><strong>+500</strong><span>Clientes atendidos</span></div>
+      <div class="stat-item"><strong>100%</strong><span>Productos certificados</span></div>
+      <div class="stat-item"><strong>9–18h</strong><span>Lun a Sáb</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="nosotros">
+  <div class="about-grid">
+    <div class="about-photo reveal">
+      <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones">
+    </div>
+    <div class="about-copy reveal">
+      <div class="kicker">Nosotros</div>
+      <h2>Quiénes somos</h2>
+      <p>Adrián Fumigaciones ofrece soluciones seguras y efectivas para el control de plagas en CABA y Gran Buenos Aires, con más de 10 años de experiencia y un compromiso genuino con la salud y el bienestar de nuestros clientes.</p>
+      <p>Atendemos hogares, comercios e instituciones con productos certificados y respuesta rápida por WhatsApp, de lunes a sábados.</p>
+      <div class="about-stats">
+        <div class="about-stat"><strong>+500</strong><span>Clientes</span></div>
+        <div class="about-stat"><strong>100%</strong><span>Certificado</span></div>
+        <div class="about-stat"><strong>CABA/GBA</strong><span>Cobertura</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="nosotros">
-  <div class="wrap">
-    <div class="about-card reveal">
-      <div class="about-frame">
-        <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="about-text">
-        <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Nosotros</div>
-        <h2>Quiénes somos</h2>
-        <p>Adrián Fumigaciones ofrece soluciones seguras y efectivas para el control de plagas en CABA y Gran Buenos Aires, con más de 10 años de experiencia y un compromiso genuino con la salud y el bienestar de nuestros clientes.</p>
-        <p>Atendemos hogares, comercios e instituciones, utilizando productos certificados y métodos responsables. Cada visita se coordina directamente por WhatsApp, con respuesta rápida y atención personalizada de lunes a sábados.</p>
-        <div class="about-stats">
-          <div class="about-stat"><strong>+10</strong><span>Años de experiencia</span></div>
-          <div class="about-stat"><strong>+500</strong><span>Clientes atendidos</span></div>
-          <div class="about-stat"><strong>100%</strong><span>Productos certificados</span></div>
-          <div class="about-stat"><strong>CABA/GBA</strong><span>Zona de cobertura</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section tint" id="servicios">
-  <div class="ambient-glow"><div class="glow-dot" style="top:-80px; right:-100px;"></div></div>
+<section class="section" id="servicios">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Servicios</div>
+      <div class="kicker">Servicios</div>
       <h2>Qué plagas eliminamos</h2>
       <p>Tratamiento específico según el tipo de plaga y el nivel de infestación.</p>
     </div>
-    <div class="services-grid reveal-stagger reveal">
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="7" ry="5"/><path d="M6 10 3 7M18 10l3-3M9 8V5M15 8V5"/></svg></div>
-        <h3>Cucarachas</h3>
-        <p>Líquidos, sólidos, aerosoles y aplicación con jeringa según el nivel de infestación.</p>
+    <div class="services-list reveal-stagger reveal">
+      <div class="service-row">
+        <span class="service-num">01</span>
+        <div class="service-body"><h3>Cucarachas</h3><p>Líquidos, sólidos, aerosoles y aplicación con jeringa según el nivel de infestación.</p></div>
       </div>
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><circle cx="14" cy="13" r="3.2"/><circle cx="18" cy="19" r="2"/><path d="M10 9.5 12 11M16 15l1.5 2.5"/></svg></div>
-        <h3>Hormigas</h3>
-        <p>Tratamiento de nidos y barreras perimetrales para evitar que vuelvan a entrar.</p>
+      <div class="service-row">
+        <span class="service-num">02</span>
+        <div class="service-body"><h3>Hormigas</h3><p>Tratamiento de nidos y barreras perimetrales para evitar que vuelvan a entrar.</p></div>
       </div>
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="3.2"/><path d="M12 14v6M6 8l3 2M18 8l-3 2M6 13h3M18 13h-3M7 18l3.5-2.5M17 18l-3.5-2.5"/></svg></div>
-        <h3>Arañas</h3>
-        <p>Control en interiores y exteriores, con foco en zonas de difícil acceso.</p>
+      <div class="service-row">
+        <span class="service-num">03</span>
+        <div class="service-body"><h3>Arañas</h3><p>Control en interiores y exteriores, con foco en zonas de difícil acceso.</p></div>
       </div>
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="12" rx="6" ry="3.4" transform="rotate(-20 10 12)"/><path d="M15 10c2-1 4-.5 5 1M15 13c2 1 4 .8 5-.5"/></svg></div>
-        <h3>Mosquitos y moscas</h3>
-        <p>Reducción de focos de cría, clave para prevenir el dengue en temporada cálida.</p>
+      <div class="service-row">
+        <span class="service-num">04</span>
+        <div class="service-body"><h3>Mosquitos y moscas</h3><p>Reducción de focos de cría, clave para prevenir el dengue en temporada cálida.</p></div>
       </div>
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M9 8.5 7 6M15 8.5l2-2.5M8 15l-2 2M16 15l2 2"/></svg></div>
-        <h3>Pulgas y garrapatas</h3>
-        <p>Tratamientos seguros para hogares con mascotas.</p>
+      <div class="service-row">
+        <span class="service-num">05</span>
+        <div class="service-body"><h3>Pulgas y garrapatas</h3><p>Tratamientos seguros para hogares con mascotas.</p></div>
       </div>
-      <div class="service-card spotlight">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="11" cy="13" rx="6" ry="4"/><path d="M17 12l4-2M6 10 3 8M9 17l-1 3M13 17l1 3"/><circle cx="14.5" cy="11" r="0.6" fill="currentColor"/></svg></div>
-        <h3>Ratas y ratones</h3>
-        <p>Desratización discreta en interiores y exteriores, sin olores ni riesgos.</p>
+      <div class="service-row">
+        <span class="service-num">06</span>
+        <div class="service-body"><h3>Ratas y ratones</h3><p>Desratización discreta en interiores y exteriores, sin olores ni riesgos.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section tight tint" id="antes-despues">
-  <div class="wrap">
+<section class="ba-section" id="antes-despues">
+  <div class="wrap section" style="padding-bottom:0;">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Resultados</div>
-      <h2>Antes y después</h2>
-      <p>Resultados reales de tratamientos aplicados.</p>
-    </div>
-    <div class="ba-grid reveal-stagger reveal">
-      <div class="ba-card spotlight">
-        <div class="ba-images">
-          <div class="ba-img"><span class="ba-label">Antes</span><img src="fotos/1 antes.png" alt="Antes del tratamiento de cucarachas" style="width:100%;height:100%;object-fit:cover;"></div>
-          <div class="ba-img after"><span class="ba-label">Después</span><img src="fotos/despus 1.png" alt="Después del tratamiento de cucarachas" style="width:100%;height:100%;object-fit:cover;"></div>
-        </div>
-        <div class="ba-caption">Cucarachas — tratamiento aplicado</div>
-      </div>
-      <div class="ba-card spotlight">
-        <div class="ba-images">
-          <div class="ba-img"><span class="ba-label">Antes</span><img src="fotos/fumigado 1.png" alt="Antes del tratamiento de hormigas" style="width:100%;height:100%;object-fit:cover;"></div>
-          <div class="ba-img after"><span class="ba-label">Después</span><img src="fotos/fumigado 2.png" alt="Después del tratamiento de hormigas" style="width:100%;height:100%;object-fit:cover;"></div>
-        </div>
-        <div class="ba-caption">Hormigas — control aplicado</div>
-      </div>
+      <div class="kicker">Resultados</div>
+      <h2 style="color:#fff;">Antes y después</h2>
+      <p style="color:rgba(255,255,255,0.7);">Resultados reales de tratamientos aplicados.</p>
     </div>
   </div>
+  <div class="ba-grid reveal-stagger reveal">
+    <div class="ba-card">
+      <div class="ba-images">
+        <div class="ba-img"><span class="ba-label">Antes</span><img src="fotos/1 antes.png" alt="Antes del tratamiento de cucarachas"></div>
+        <div class="ba-img after"><span class="ba-label">Después</span><img src="fotos/despus 1.png" alt="Después del tratamiento de cucarachas"></div>
+      </div>
+      <div class="wrap"><div class="ba-caption">Cucarachas — tratamiento aplicado</div></div>
+    </div>
+    <div class="ba-card">
+      <div class="ba-images">
+        <div class="ba-img"><span class="ba-label">Antes</span><img src="fotos/fumigado 1.png" alt="Antes del tratamiento de hormigas"></div>
+        <div class="ba-img after"><span class="ba-label">Después</span><img src="fotos/fumigado 2.png" alt="Después del tratamiento de hormigas"></div>
+      </div>
+      <div class="wrap"><div class="ba-caption">Hormigas — control aplicado</div></div>
+    </div>
+  </div>
+  <div style="height:72px;"></div>
 </section>
 
-<section class="section tint" id="trabajos">
+<section class="section" id="trabajos">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Trabajos</div>
+      <div class="kicker">Trabajos</div>
       <h2>Trabajos realizados</h2>
-      <p>Reemplazá cada bloque por una foto real de un trabajo terminado.</p>
+      <p>Una muestra de intervenciones reales en hogares y comercios.</p>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.13 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (2).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.15 (1).jpeg" alt="Adrián Fumigaciones" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#F3EFEF"/></svg></div>
-      <div class="gallery-item"><svg viewBox="0 0 300 300"><rect width="300" height="300" fill="#FFEEEE"/></svg></div>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.13 (1).jpeg" alt="Adrián Fumigaciones"></div>
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (1).jpeg" alt="Adrián Fumigaciones"></div>
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.14 (2).jpeg" alt="Adrián Fumigaciones"></div>
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.15 (1).jpeg" alt="Adrián Fumigaciones"></div>
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.19.jpeg" alt="Adrián Fumigaciones"></div>
+    <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones"></div>
+  </div>
+</section>
+
+<section class="section tight" id="proceso" style="background:var(--ink); color:#fff;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Proceso</div>
+      <h2 style="color:#fff;">Cómo trabajamos</h2>
+    </div>
+    <div class="process-grid reveal-stagger reveal" style="border-top-color:rgba(255,255,255,0.25);">
+      <div class="process-step" style="border-right-color:rgba(255,255,255,0.18);"><span class="num">01</span><h3 style="color:#fff;">Contacto</h3><p style="color:rgba(255,255,255,0.65);">Nos escribís por WhatsApp y coordinamos día y horario.</p></div>
+      <div class="process-step" style="border-right-color:rgba(255,255,255,0.18);"><span class="num">02</span><h3 style="color:#fff;">Diagnóstico</h3><p style="color:rgba(255,255,255,0.65);">Evaluamos el tipo de plaga y el nivel de infestación.</p></div>
+      <div class="process-step" style="border-right-color:rgba(255,255,255,0.18);"><span class="num">03</span><h3 style="color:#fff;">Aplicación</h3><p style="color:rgba(255,255,255,0.65);">Productos certificados, seguros para personas y mascotas.</p></div>
+      <div class="process-step"><span class="num">04</span><h3 style="color:#fff;">Seguimiento</h3><p style="color:rgba(255,255,255,0.65);">Recomendamos frecuencia de mantenimiento si hace falta.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section tight" id="proceso">
+<section class="section" id="cobertura">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Proceso</div>
-      <h2>Cómo trabajamos</h2>
-    </div>
-    <div class="process-grid reveal-stagger reveal">
-      <div class="process-step spotlight"><span class="num">1</span><h3>Contacto</h3><p>Nos escribís por WhatsApp y coordinamos día y horario.</p></div>
-      <div class="process-step spotlight"><span class="num">2</span><h3>Diagnóstico</h3><p>Evaluamos el tipo de plaga y el nivel de infestación.</p></div>
-      <div class="process-step spotlight"><span class="num">3</span><h3>Aplicación</h3><p>Productos aprobados, seguros para personas y mascotas.</p></div>
-      <div class="process-step spotlight"><span class="num">4</span><h3>Seguimiento</h3><p>Recomendamos frecuencia de mantenimiento si hace falta.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section tint" id="cobertura">
-  <div class="ambient-glow"><div class="glow-dot" style="bottom:-100px; left:-80px;"></div></div>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Cobertura</div>
+      <div class="kicker">Cobertura</div>
       <h2>A dónde llegamos</h2>
       <p>CABA y todo el Gran Buenos Aires: casas, departamentos, locales, oficinas, jardines, countries e instituciones.</p>
     </div>
@@ -556,13 +426,13 @@
 <section class="section tight" id="faq">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Dudas frecuentes</div>
+      <div class="kicker">Dudas frecuentes</div>
       <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq reveal">
       <div class="faq-item">
         <button class="faq-q">¿Es seguro para mascotas y niños?<span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí. Usamos productos aprobados y aplicamos con responsabilidad. Aun así, recomendamos ventilar el espacio y evitar el contacto directo durante algunas horas después del tratamiento.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Usamos productos certificados y aplicamos con responsabilidad. Aun así, recomendamos ventilar el espacio y evitar el contacto directo durante algunas horas después del tratamiento.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cuánto dura el efecto del tratamiento?<span class="plus">+</span></button>
@@ -584,64 +454,51 @@
   </div>
 </section>
 
-<section class="section tint" id="redes">
+<section class="section" id="redes">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Redes</div>
+      <div class="kicker">Redes</div>
       <h2>Seguinos</h2>
     </div>
     <div class="social-row reveal">
-      <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+      <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" class="social-link social-fb">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
         Facebook
       </a>
-      <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" style="fill:none" stroke="url(#igGrad1)" stroke-width="1.8">
-          <defs><linearGradient id="igGrad1" x1="0" y1="24" x2="24" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset="0.35" stop-color="#D62976"/><stop offset="0.65" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs>
-          <rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="url(#igGrad1)" stroke="none"/>
-        </svg>
+      <a href="https://www.instagram.com/adrianfumigaciones" target="_blank" rel="noopener" class="social-link social-ig">
+        <svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff" stroke="none"/></svg>
         Instagram
       </a>
-      <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+      <a href="https://wa.me/5491138762463" target="_blank" rel="noopener" class="social-link social-wa">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
         WhatsApp
       </a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="contact-card-big reveal" id="contacto">
-      <div>
-        <h2>Escribinos y coordinamos tu turno</h2>
-        <p>Respuesta rápida por WhatsApp, de lunes a sábados. Contanos qué plaga tenés y el tipo de espacio.</p>
-        <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-      </div>
-      <div class="contact-info">
-        <div class="contact-row"><span style="color:#25D366; font-weight:800;">WhatsApp</span><span>11 3876-2463</span></div>
-        <div class="contact-row"><span>Email</span><span>Próximamente</span></div>
-        <div class="contact-row"><span>Horario</span><span>Lun a Sáb, 9 a 18 hs</span></div>
-        <div class="contact-row"><span>Zona</span><span>CABA / GBA</span></div>
-        <div class="contact-row"><span>Web</span><span>adrianfumigaciones.site</span></div>
-        <div class="contact-row"><span>Pagos</span><span>Todos los medios</span></div>
-      </div>
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <h2>Escribinos y coordinamos tu turno</h2>
+      <p>Respuesta rápida por WhatsApp, de lunes a sábados. Contanos qué plaga tenés y el tipo de espacio.</p>
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20coordinar%20una%20fumigación" class="btn btn-light" style="background:#fff;" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-row"><span>WhatsApp</span><span>11 3876-2463</span></div>
+      <div class="contact-row"><span>Email</span><span>Próximamente</span></div>
+      <div class="contact-row"><span>Horario</span><span>Lun a Sáb, 9 a 18 hs</span></div>
+      <div class="contact-row"><span>Zona</span><span>CABA / GBA</span></div>
+      <div class="contact-row"><span>Web</span><span>adrianfumigaciones.site</span></div>
+      <div class="contact-row"><span>Pagos</span><span>Todos los medios</span></div>
     </div>
   </div>
 </section>
 
-<div class="footer-wave">
-  <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
-    <path d="M0,45 C 180,90 360,0 540,35 C 720,70 900,10 1080,40 C 1260,70 1350,50 1440,45 L1440,90 L0,90 Z" fill="var(--ink)"/>
-  </svg>
-</div>
-<footer class="site-footer">
+<footer>
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <div class="logo">
-        <div class="logo-mark"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
-        <div class="logo-text" style="color:#fff;">Adrián <span>Fumigaciones</span></div>
-      </div>
+      <div class="logo-mark" style="width:56px;height:56px;"><img src="fotos/logo.jpg" alt="Adrián Fumigaciones"></div>
       <p>Control de plagas para hogares, comercios e instituciones en CABA y Gran Buenos Aires. Atención de lunes a sábados, 9 a 18 hs.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/Adrianfumigaciones.1975" target="_blank" rel="noopener" aria-label="Facebook" style="background:#1877F2;">
@@ -667,8 +524,8 @@
 
     <div class="footer-col">
       <h4>Contacto</h4>
-      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener" style="color:#25D366; font-weight:700;">WhatsApp: 11 3876-2463</a>
-      <!-- TODO: agregar nuevo email cuando esté creado, ej: <a href="mailto:nuevo@correo.com">nuevo@correo.com</a> -->
+      <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener" style="color:#25D366; font-weight:800;">WhatsApp: 11 3876-2463</a>
+      <!-- TODO: agregar nuevo email cuando esté creado -->
       <span>Lunes a sábados, 9 a 18 hs</span>
       <span>CABA y Gran Buenos Aires</span>
       <span>adrianfumigaciones.site</span>
@@ -677,7 +534,7 @@
 
   <div class="wrap footer-bottom">
     <span>© 2026 Adrián Fumigaciones. Todos los derechos reservados.</span>
-    <a href="https://wa.me/5491135679728?text=Hola%20Diego!%20Vi%20la%20p%C3%A1gina%20de%20Adri%C3%A1n%20Fumigaciones%20y%20quiero%20consultar%20por%20una%20p%C3%A1gina%20para%20mi%20negocio" target="_blank" rel="noopener" class="credit">Página realizada por <span>Diego Z</span></a>
+    <a href="https://wa.me/5491135679728?text=Hola%20Diego!%20Vi%20la%20p%C3%A1gina%20de%20Adri%C3%A1n%20Fumigaciones%20y%20quiero%20consultar%20por%20una%20p%C3%A1gina%20para%20mi%20negocio" target="_blank" rel="noopener" class="credit">Página realizada por Diego Z</a>
   </div>
 </footer>
 
@@ -686,7 +543,7 @@
     <span class="wa-bubble-dot"></span>¿Tenés una duda? Escribinos
   </a>
   <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-    <svg width="27" height="27" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.11.32.02.51-.09.19-.13.31-.26.47-.13.16-.28.36-.4.48-.13.13-.27.28-.12.55.15.28.68 1.13 1.47 1.83 1.01.9 1.86 1.18 2.14 1.31.28.13.44.11.6-.07.17-.18.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.11.32.02.51-.09.19-.13.31-.26.47-.13.16-.28.36-.4.48-.13.13-.27.28-.12.55.15.28.68 1.13 1.47 1.83 1.01.9 1.86 1.18 2.14 1.31.28.13.44.11.6-.07.17-.18.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
   </a>
 </div>
 
@@ -698,13 +555,13 @@
     navLinks.style.display = show ? 'flex' : 'none';
     navLinks.style.flexDirection = 'column';
     navLinks.style.position = 'absolute';
-    navLinks.style.top = '72px';
+    navLinks.style.top = '68px';
     navLinks.style.left = '0';
     navLinks.style.right = '0';
-    navLinks.style.background = '#fff';
+    navLinks.style.background = 'var(--ink)';
     navLinks.style.padding = '22px 28px';
-    navLinks.style.gap = '16px';
-    navLinks.style.borderBottom = '1px solid rgba(34,29,29,0.08)';
+    navLinks.style.gap = '18px';
+    navLinks.style.borderBottom = '3px solid var(--red)';
   });
 
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -727,17 +584,6 @@
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
   document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
-
-  // Spotlight hover glow — follows the cursor behind each card
-  if (!window.matchMedia('(hover: none)').matches){
-    document.querySelectorAll('.spotlight').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-      });
-    });
-  }
 </script>
 
 </body>
