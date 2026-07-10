@@ -135,6 +135,25 @@
   .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
   .gallery-item:hover img{transform:scale(1.08);}
 
+  /* Video carousel — swipeable with scroll-snap */
+  .video-carousel-wrap{position:relative;}
+  .video-carousel{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding:8px 4px 24px; scrollbar-width:none; -ms-overflow-style:none;}
+  .video-carousel::-webkit-scrollbar{display:none;}
+  .video-slide{flex:0 0 auto; width:min(320px, 78vw); scroll-snap-align:center; border-radius:24px; overflow:hidden; position:relative; box-shadow:0 14px 34px -10px rgba(22,18,33,0.3);}
+  .video-slide video{width:100%; aspect-ratio:9/16; object-fit:cover; display:block; background:#000;}
+  .video-nav{position:absolute; top:40%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:5; transition:transform 0.2s;}
+  .video-nav:hover{transform:translateY(-50%) scale(1.08);}
+  .video-nav svg{width:20px; height:20px; stroke:var(--ink); fill:none; stroke-width:2.2;}
+  .video-nav-prev{left:-8px;}
+  .video-nav-next{right:-8px;}
+  .video-dots{display:flex; gap:8px; justify-content:center; margin-top:8px;}
+  .video-dot{width:8px; height:8px; border-radius:50%; background:rgba(22,18,33,0.2); transition:background 0.2s, transform 0.2s;}
+  .video-dot.active{background:var(--red); transform:scale(1.3);}
+  @media (max-width:640px){
+    .video-nav{display:none;}
+    .video-slide{width:74vw;}
+  }
+
   .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;}
   .process-step{border-radius:22px; padding:28px 22px; position:relative;}
   .process-step .num{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg, var(--red), #FF8C6B); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1rem; margin-bottom:16px;}
@@ -328,7 +347,7 @@
   <div class="wrap">
     <div class="about-card glass reveal">
       <div class="about-photo">
-        <img src="fotos/WhatsApp Image 2026-07-08 at 12.41.12.jpeg" alt="Adrián Fumigaciones">
+        <img src="fotos/WhatsApp Image 2026-07-08 at 12.46.50.jpeg" alt="Adrián Fumigaciones">
       </div>
       <div class="about-text">
         <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Nosotros</div>
@@ -451,6 +470,31 @@
       <div class="gallery-item"><img src="fotos/qwewqewq.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
       <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.49.48.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
       <div class="gallery-item"><img src="fotos/WhatsApp Image 2026-07-08 at 12.49.49.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="videos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Videos</div>
+      <h2>Mirá cómo trabajamos</h2>
+      <p>Deslizá para ver más videos de trabajos reales.</p>
+    </div>
+    <div class="video-carousel-wrap reveal">
+      <button class="video-nav video-nav-prev glass" id="videoPrev" aria-label="Video anterior">
+        <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="video-carousel" id="videoCarousel">
+        <div class="video-slide glass"><video src="fotos/vid 1.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="video-slide glass"><video src="fotos/vid 2.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="video-slide glass"><video src="fotos/vid 3.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="video-slide glass"><video src="fotos/vid 4.mp4" controls playsinline preload="metadata"></video></div>
+      </div>
+      <button class="video-nav video-nav-next glass" id="videoNext" aria-label="Siguiente video">
+        <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="video-dots" id="videoDots"></div>
     </div>
   </div>
 </section>
@@ -655,6 +699,42 @@
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
   document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+
+  // Video carousel
+  const carousel = document.getElementById('videoCarousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.video-slide');
+    const dotsWrap = document.getElementById('videoDots');
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'video-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => slides[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.video-dot');
+
+    function scrollByCard(dir) {
+      const cardWidth = slides[0].getBoundingClientRect().width + 20;
+      carousel.scrollBy({left: dir * cardWidth, behavior:'smooth'});
+    }
+    document.getElementById('videoPrev').addEventListener('click', () => scrollByCard(-1));
+    document.getElementById('videoNext').addEventListener('click', () => scrollByCard(1));
+
+    const slideIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const idx = Array.from(slides).indexOf(e.target);
+        if (e.isIntersecting && e.intersectionRatio > 0.6) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+        if (!e.isIntersecting) {
+          const v = e.target.querySelector('video');
+          if (v && !v.paused) v.pause();
+        }
+      });
+    }, {root: carousel, threshold: [0.6]});
+    slides.forEach(s => slideIO.observe(s));
+  }
 </script>
 
 </body>
