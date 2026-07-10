@@ -130,10 +130,17 @@
   .ba-img.after .ba-label{background:var(--red);}
   .ba-caption{padding:18px 20px; font-size:0.98rem; font-weight:700;}
 
-  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
-  .gallery-item{aspect-ratio:1/1; border-radius:20px; overflow:hidden; box-shadow:0 10px 26px -8px rgba(22,18,33,0.25); border:3px solid #fff;}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:170px;
+    grid-auto-flow:dense;
+    gap:16px;
+  }
+  .gallery-item{border-radius:20px; overflow:hidden; box-shadow:0 12px 30px -10px rgba(22,18,33,0.28); position:relative;}
   .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
-  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-item.feat{grid-column:span 2; grid-row:span 2;}
 
   /* Video carousel — swipeable with scroll-snap, focused-video "epic" effect */
   .video-carousel-wrap{position:relative; padding:30px 0;}
@@ -153,16 +160,10 @@
   .video-mute{position:absolute; bottom:12px; right:12px; width:38px; height:38px; border-radius:50%; background:rgba(22,18,33,0.55); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:3; opacity:0; transition:opacity 0.3s ease;}
   .video-slide.active .video-mute{opacity:1;}
   .video-mute svg{width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2;}
-  .video-nav{position:absolute; top:44%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:5; transition:transform 0.2s;}
-  .video-nav:hover{transform:translateY(-50%) scale(1.08);}
-  .video-nav svg{width:20px; height:20px; stroke:var(--ink); fill:none; stroke-width:2.2;}
-  .video-nav-prev{left:-8px;}
-  .video-nav-next{right:-8px;}
   .video-dots{display:flex; gap:8px; justify-content:center; margin-top:8px;}
   .video-dot{width:8px; height:8px; border-radius:50%; background:rgba(22,18,33,0.2); transition:background 0.2s, transform 0.2s;}
   .video-dot.active{background:var(--red); transform:scale(1.3);}
   @media (max-width:640px){
-    .video-nav{display:none;}
     .video-slide{width:66vw;}
   }
 
@@ -238,7 +239,8 @@
     .contact-card-big{padding:40px 28px;}
     .stat-strip{margin-top:20px;}
     .process-grid, .services-grid{grid-template-columns:1fr 1fr;}
-    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:repeat(2, 1fr); grid-auto-rows:150px;}
+    .gallery-item.feat{grid-column:span 2; grid-row:span 1;}
     .footer-grid{grid-template-columns:1fr; gap:28px;}
   }
   @media (max-width:640px){
@@ -264,7 +266,7 @@
     .services-grid{grid-template-columns:1fr; gap:14px;}
     .service-card{padding:24px 20px;}
     .ba-grid{gap:16px;}
-    .gallery-grid{grid-template-columns:1fr 1fr; gap:16px;}
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-auto-rows:130px; gap:12px;}
     .process-grid{grid-template-columns:1fr 1fr; gap:12px;}
     .process-step{padding:22px 18px;}
     .contact-card-big{padding:28px 18px; border-radius:24px; gap:28px;}
@@ -476,7 +478,7 @@
       <p>Una muestra de intervenciones reales en hogares y comercios.</p>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item"><img src="fotos/adsada.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
+      <div class="gallery-item feat"><img src="fotos/adsada.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
       <div class="gallery-item"><img src="fotos/asdasd.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
       <div class="gallery-item"><img src="fotos/qweqeq.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
       <div class="gallery-item"><img src="fotos/qwewqewq.jpeg" alt="Adrián Fumigaciones - trabajo realizado" loading="lazy"></div>
@@ -494,18 +496,12 @@
       <p>Deslizá para ver más videos de trabajos reales.</p>
     </div>
     <div class="video-carousel-wrap reveal">
-      <button class="video-nav video-nav-prev glass" id="videoPrev" aria-label="Video anterior">
-        <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
       <div class="video-carousel" id="videoCarousel">
         <div class="video-slide active"><video src="fotos/vid 1.mp4" muted loop playsinline preload="metadata"></video><button class="video-mute" aria-label="Activar sonido"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M18.5 8.5a5 5 0 0 1 0 7M15.5 10.5a2.5 2.5 0 0 1 0 3"/></svg></button></div>
         <div class="video-slide"><video src="fotos/vid 2.mp4" muted loop playsinline preload="metadata"></video><button class="video-mute" aria-label="Activar sonido"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M18.5 8.5a5 5 0 0 1 0 7M15.5 10.5a2.5 2.5 0 0 1 0 3"/></svg></button></div>
         <div class="video-slide"><video src="fotos/vid 3.mp4" muted loop playsinline preload="metadata"></video><button class="video-mute" aria-label="Activar sonido"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M18.5 8.5a5 5 0 0 1 0 7M15.5 10.5a2.5 2.5 0 0 1 0 3"/></svg></button></div>
         <div class="video-slide"><video src="fotos/vid 4.mp4" muted loop playsinline preload="metadata"></video><button class="video-mute" aria-label="Activar sonido"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M18.5 8.5a5 5 0 0 1 0 7M15.5 10.5a2.5 2.5 0 0 1 0 3"/></svg></button></div>
       </div>
-      <button class="video-nav video-nav-next glass" id="videoNext" aria-label="Siguiente video">
-        <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
       <div class="video-dots" id="videoDots"></div>
     </div>
   </div>
@@ -740,8 +736,6 @@
       const cardWidth = slides[0].getBoundingClientRect().width + 16;
       carousel.scrollBy({left: dir * cardWidth, behavior:'smooth'});
     }
-    document.getElementById('videoPrev').addEventListener('click', () => scrollByCard(-1));
-    document.getElementById('videoNext').addEventListener('click', () => scrollByCard(1));
 
     const slideIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {
