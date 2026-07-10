@@ -121,14 +121,15 @@
   .service-card h3{font-size:1.08rem; margin-bottom:8px;}
   .service-card p{font-size:0.95rem; font-weight:600; color:var(--ink-soft);}
 
-  .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;}
-  .ba-card{border-radius:24px; overflow:hidden;}
-  .ba-images{display:grid; grid-template-columns:1fr 1fr;}
+  .ba-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:28px;}
+  .ba-card{border-radius:24px; overflow:hidden; box-shadow:0 14px 34px -10px rgba(22,18,33,0.28); background:#fff;}
+  .ba-images{display:grid; grid-template-columns:1fr 1fr; gap:3px; background:rgba(22,18,33,0.08);}
   .ba-img{aspect-ratio:1/1; position:relative; overflow:hidden;}
-  .ba-img img{width:100%; height:100%; object-fit:cover;}
-  .ba-label{position:absolute; top:12px; left:12px; font-size:0.75rem; font-weight:700; color:#fff; padding:6px 14px; border-radius:999px; background:rgba(22,18,33,0.6); backdrop-filter:blur(4px);}
+  .ba-img img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
+  .ba-card:hover .ba-img img{transform:scale(1.05);}
+  .ba-label{position:absolute; top:14px; left:14px; font-size:0.78rem; font-weight:700; color:#fff; padding:7px 16px; border-radius:999px; background:rgba(22,18,33,0.65); backdrop-filter:blur(6px); letter-spacing:0.02em;}
   .ba-img.after .ba-label{background:var(--red);}
-  .ba-caption{padding:18px 20px; font-size:0.98rem; font-weight:700;}
+  .ba-caption{padding:20px 22px; font-size:1.02rem; font-weight:700;}
 
   .gallery-grid{
     display:grid;
@@ -137,7 +138,7 @@
     grid-auto-flow:dense;
     gap:16px;
   }
-  .gallery-item{border-radius:20px; overflow:hidden; box-shadow:0 12px 30px -10px rgba(22,18,33,0.28); position:relative;}
+  .gallery-item{border-radius:20px; overflow:hidden; box-shadow:0 12px 30px -10px rgba(22,18,33,0.28); position:relative; border:3px solid #fff;}
   .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;}
   .gallery-item:hover img{transform:scale(1.06);}
   .gallery-item.feat{grid-column:span 2; grid-row:span 2;}
