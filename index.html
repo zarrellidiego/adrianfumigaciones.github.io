@@ -31,12 +31,12 @@
 
   .wrap{max-width:1200px; margin:0 auto; padding:0 32px; position:relative; z-index:1;}
 
-  .mesh{position:fixed; inset:0; z-index:-1; overflow:hidden; background:#F2F4F3;}
+  .mesh{position:fixed; inset:0; z-index:-1; overflow:hidden; background:#F4F1FB;}
   .mesh .blob{position:absolute; border-radius:50%; filter:blur(60px);}
-  .mesh .m1{width:56vw; height:56vw; max-width:780px; max-height:780px; background:radial-gradient(circle, #E63946, transparent 70%); top:-18vw; left:-14vw; opacity:0.6; animation:drift1 24s ease-in-out infinite;}
-  .mesh .m2{width:46vw; height:46vw; max-width:640px; max-height:640px; background:radial-gradient(circle, #0F6E5C, transparent 70%); top:8vw; right:-14vw; opacity:0.55; animation:drift2 28s ease-in-out infinite;}
-  .mesh .m3{width:50vw; height:50vw; max-width:680px; max-height:680px; background:radial-gradient(circle, #1E4E8C, transparent 70%); bottom:-16vw; left:10vw; opacity:0.55; animation:drift3 26s ease-in-out infinite;}
-  .mesh .m4{width:40vw; height:40vw; max-width:520px; max-height:520px; background:radial-gradient(circle, #146B5C, transparent 70%); bottom:5vw; right:8vw; opacity:0.45; animation:drift1 22s ease-in-out infinite reverse;}
+  .mesh .m1{width:56vw; height:56vw; max-width:780px; max-height:780px; background:radial-gradient(circle, #FF6B6B, transparent 70%); top:-18vw; left:-14vw; opacity:0.65; animation:drift1 24s ease-in-out infinite;}
+  .mesh .m2{width:46vw; height:46vw; max-width:640px; max-height:640px; background:radial-gradient(circle, #6C63FF, transparent 70%); top:8vw; right:-14vw; opacity:0.55; animation:drift2 28s ease-in-out infinite;}
+  .mesh .m3{width:50vw; height:50vw; max-width:680px; max-height:680px; background:radial-gradient(circle, #FFC93C, transparent 70%); bottom:-16vw; left:10vw; opacity:0.55; animation:drift3 26s ease-in-out infinite;}
+  .mesh .m4{width:40vw; height:40vw; max-width:520px; max-height:520px; background:radial-gradient(circle, #2FD9C4, transparent 70%); bottom:5vw; right:8vw; opacity:0.5; animation:drift1 22s ease-in-out infinite reverse;}
   @keyframes drift1{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(4vw,3vw) scale(1.12);}}
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-4vw,4vw) scale(1.1);}}
   @keyframes drift3{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(3vw,-3vw) scale(1.14);}}
@@ -116,8 +116,8 @@
   .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
   .service-card{border-radius:22px; padding:30px 26px; transition:transform 0.25s ease, box-shadow 0.25s ease;}
   .service-card:hover{transform:translateY(-6px);}
-  .service-icon{width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg, var(--red), #FF8C6B); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
-  .service-icon svg{width:24px; height:24px; stroke:#fff; fill:none; stroke-width:1.6;}
+  .service-photo{width:100%; aspect-ratio:4/3; border-radius:16px; overflow:hidden; margin-bottom:18px; box-shadow:0 8px 20px rgba(22,18,33,0.14);}
+  .service-photo img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
   .service-card h3{font-size:1.08rem; margin-bottom:8px;}
   .service-card p{font-size:0.95rem; font-weight:600; color:var(--ink-soft);}
 
@@ -354,35 +354,59 @@
     </div>
     <div class="services-grid reveal-stagger reveal">
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="7" ry="5"/><path d="M6 10 3 7M18 10l3-3M9 8V5M15 8V5"/></svg></div>
+        <div class="service-photo"><img src="fotos/cuca.jpeg" alt="Cucarachas" loading="lazy"></div>
         <h3>Cucarachas</h3>
         <p>Líquidos, sólidos, aerosoles y jeringa según el nivel de infestación.</p>
       </div>
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><circle cx="14" cy="13" r="3.2"/><circle cx="18" cy="19" r="2"/><path d="M10 9.5 12 11M16 15l1.5 2.5"/></svg></div>
+        <div class="service-photo"><img src="fotos/horimi.avif" alt="Hormigas" loading="lazy"></div>
         <h3>Hormigas</h3>
         <p>Tratamiento de nidos y barreras perimetrales.</p>
       </div>
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="3.2"/><path d="M12 14v6M6 8l3 2M18 8l-3 2M6 13h3M18 13h-3M7 18l3.5-2.5M17 18l-3.5-2.5"/></svg></div>
+        <div class="service-photo"><img src="fotos/arana.jpeg" alt="Arañas" loading="lazy"></div>
         <h3>Arañas</h3>
         <p>Control en interiores y exteriores.</p>
       </div>
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="12" rx="6" ry="3.4" transform="rotate(-20 10 12)"/><path d="M15 10c2-1 4-.5 5 1M15 13c2 1 4 .8 5-.5"/></svg></div>
+        <div class="service-photo"><img src="fotos/mosqui.jpeg" alt="Mosquitos y moscas" loading="lazy"></div>
         <h3>Mosquitos y moscas</h3>
         <p>Reducción de focos de cría.</p>
       </div>
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M9 8.5 7 6M15 8.5l2-2.5M8 15l-2 2M16 15l2 2"/></svg></div>
+        <div class="service-photo"><img src="fotos/images (1).jpeg" alt="Pulgas y garrapatas" loading="lazy"></div>
         <h3>Pulgas y garrapatas</h3>
         <p>Seguros para hogares con mascotas.</p>
       </div>
       <div class="service-card glass">
-        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="11" cy="13" rx="6" ry="4"/><path d="M17 12l4-2M6 10 3 8M9 17l-1 3M13 17l1 3"/><circle cx="14.5" cy="11" r="0.6" fill="currentColor"/></svg></div>
+        <div class="service-photo"><img src="fotos/images.jpeg" alt="Ratas y ratones" loading="lazy"></div>
         <h3>Ratas y ratones</h3>
         <p>Desratización discreta, sin olores.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="espacios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="pill-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Dónde trabajamos</div>
+      <h2>¿Qué espacios fumigamos?</h2>
+      <p>Atendemos todo tipo de propiedades, residenciales y comerciales.</p>
+    </div>
+    <div class="tags-wrap reveal">
+      <span class="tag glass">Casas</span>
+      <span class="tag glass">Departamentos</span>
+      <span class="tag glass">Casas de comidas</span>
+      <span class="tag glass">Fábricas</span>
+      <span class="tag glass">Mayoristas</span>
+      <span class="tag glass">Countries</span>
+      <span class="tag glass">Terrenos</span>
+      <span class="tag glass">Iglesias</span>
+      <span class="tag glass">Estacionamientos</span>
+      <span class="tag glass">Depósitos</span>
+      <span class="tag glass">Construcciones</span>
+      <span class="tag glass">Y más…</span>
     </div>
   </div>
 </section>
@@ -524,7 +548,7 @@
       </div>
       <div class="contact-info">
         <div class="contact-row"><span>WhatsApp</span><span>11 3876-2463</span></div>
-        <div class="contact-row"><span>Email</span><span>refrigeracion.frias@hotmail.com</span></div>
+        <div class="contact-row"><span>Email</span><span>Próximamente</span></div>
         <div class="contact-row"><span>Horario</span><span>Lun a Sáb, 9 a 18 hs</span></div>
         <div class="contact-row"><span>Zona</span><span>CABA / GBA</span></div>
         <div class="contact-row"><span>Web</span><span>adrianfumigaciones.site</span></div>
@@ -568,7 +592,7 @@
         <div class="footer-col">
           <h4>Contacto</h4>
           <a href="https://wa.me/5491138762463?text=Hola!%20Quiero%20consultar%20por%20una%20fumigación" target="_blank" rel="noopener" style="color:#25D366; font-weight:700;">WhatsApp: 11 3876-2463</a>
-          <a href="mailto:refrigeracion.frias@hotmail.com">refrigeracion.frias@hotmail.com</a>
+          <!-- TODO: agregar nuevo email cuando esté creado -->
           <span>Lunes a sábados, 9 a 18 hs</span>
           <span>CABA y Gran Buenos Aires</span>
           <span>adrianfumigaciones.site</span>
