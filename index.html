@@ -143,9 +143,9 @@
   .work-badge svg{width:14px; height:14px; stroke:var(--wa-green); fill:none; stroke-width:2.4;}
   .work-info h3{font-size:1.05rem; margin-bottom:4px;}
   .work-info p{font-size:0.92rem; color:var(--ink-soft); font-weight:600;}
-  .work-dots{display:flex; gap:8px; justify-content:center; margin-top:4px;}
-  .work-dot{width:8px; height:8px; border-radius:50%; background:rgba(22,18,33,0.2); transition:background 0.2s, transform 0.2s;}
-  .work-dot.active{background:var(--red); transform:scale(1.3);}
+  .work-dots{display:flex; gap:6px; justify-content:center; margin-top:18px;}
+  .work-dot{width:22px; height:6px; border-radius:999px; background:rgba(22,18,33,0.18); transition:background 0.25s ease, width 0.25s ease;}
+  .work-dot.active{background:var(--red); width:34px;}
 
   /* Video carousel — swipeable with scroll-snap, focused-video "epic" effect */
   .video-carousel-wrap{position:relative; padding:30px 0;}
@@ -165,9 +165,9 @@
   .video-mute{position:absolute; bottom:12px; right:12px; width:38px; height:38px; border-radius:50%; background:rgba(22,18,33,0.55); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:3; opacity:0; transition:opacity 0.3s ease;}
   .video-slide.active .video-mute{opacity:1;}
   .video-mute svg{width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2;}
-  .video-dots{display:flex; gap:8px; justify-content:center; margin-top:8px;}
-  .video-dot{width:8px; height:8px; border-radius:50%; background:rgba(22,18,33,0.2); transition:background 0.2s, transform 0.2s;}
-  .video-dot.active{background:var(--red); transform:scale(1.3);}
+  .video-dots{display:flex; gap:6px; justify-content:center; margin-top:18px;}
+  .video-dot{width:22px; height:6px; border-radius:999px; background:rgba(22,18,33,0.18); transition:background 0.25s ease, width 0.25s ease;}
+  .video-dot.active{background:var(--red); width:34px;}
   @media (max-width:640px){
     .video-slide{width:66vw;}
   }
